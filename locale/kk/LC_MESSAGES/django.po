@@ -1,0 +1,467 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-13 15:11+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: .\guide\forms.py:34 .\templates\base.html:70
+#: .\templates\category\create.html:5 .\templates\category\edit.html:5
+#: .\templates\category\index.html:6 .\templates\category\read.html:5
+#: .\templates\question\read.html:7 .\templates\teststask\read.html:8
+msgid "category"
+msgstr "Санат"
+
+#: .\guide\forms.py:55 .\templates\base.html:71
+#: .\templates\protocol\index.html:14 .\templates\protocol\list.html:16
+#: .\templates\teststask\create.html:5 .\templates\teststask\edit.html:5
+#: .\templates\teststask\index.html:6 .\templates\teststask\read.html:5
+msgid "teststask"
+msgstr "Тест тапсырмасы"
+
+#: .\guide\models.py:35 .\templates\teststask\index.html:12
+#: .\templates\teststask\list.html:12
+msgid "category_title"
+msgstr "Санат атауы"
+
+#: .\guide\models.py:47 .\templates\teststask\index.html:13
+#: .\templates\teststask\list.html:13
+msgid "teststask_title"
+msgstr "Тест тапсырмасының тақырыбы"
+
+#: .\guide\models.py:48
+msgid "teststask_details"
+msgstr "Тест тапсырмаларының егжей-тегжейлері"
+
+#: .\guide\models.py:49 .\templates\teststask\index.html:14
+#: .\templates\teststask\read.html:18
+msgid "minutes"
+msgstr "Уақыт, мин."
+
+#: .\guide\models.py:50 .\templates\teststask\index.html:15
+#: .\templates\teststask\read.html:22
+msgid "limit"
+msgstr "Өту ұпайы, %"
+
+#: .\guide\models.py:68 .\templates\question\index.html:13
+#: .\templates\question\read.html:13
+msgid "question"
+msgstr "Сұрақ"
+
+#: .\guide\models.py:69
+msgid "photo"
+msgstr "Сурет"
+
+#: .\guide\models.py:70 .\templates\question\read.html:23
+msgid "reply1"
+msgstr "Жауаптың №1 нұсқасы"
+
+#: .\guide\models.py:71 .\templates\question\read.html:27
+msgid "ok1"
+msgstr "Рас (иә/жоқ)"
+
+#: .\guide\models.py:72 .\templates\question\read.html:31
+msgid "reply2"
+msgstr "Жауаптың №2 нұсқасы"
+
+#: .\guide\models.py:73 .\templates\question\read.html:35
+msgid "ok2"
+msgstr "Рас (иә/жоқ)"
+
+#: .\guide\models.py:74 .\templates\question\read.html:40
+msgid "reply3"
+msgstr "Жауаптың №3 нұсқасы"
+
+#: .\guide\models.py:75 .\templates\question\read.html:44
+msgid "ok3"
+msgstr "Рас (иә/жоқ)"
+
+#: .\guide\models.py:76 .\templates\question\read.html:50
+msgid "reply4"
+msgstr "Жауаптың №4 нұсқасы"
+
+#: .\guide\models.py:77 .\templates\question\read.html:54
+msgid "ok4"
+msgstr "Рас (иә/жоқ)"
+
+#: .\guide\models.py:78 .\templates\question\read.html:60
+msgid "reply5"
+msgstr "Жауаптың №5 нұсқасы"
+
+#: .\guide\models.py:79 .\templates\question\read.html:64
+msgid "ok5"
+msgstr "Рас (иә/жоқ)"
+
+#: .\guide\models.py:119 .\templates\protocol\index.html:12
+#: .\templates\protocol\list.html:14
+msgid "datep"
+msgstr "Күні"
+
+#: .\guide\models.py:120 .\templates\protocol\index.html:15
+#: .\templates\protocol\list.html:17
+msgid "result"
+msgstr "Нәтиже"
+
+#: .\guide\models.py:121
+msgid "protocol_details"
+msgstr "Егжей"
+
+#: .\guide\models.py:136 .\templates\decision\index.html:12
+#: .\templates\decision\read.html:13 .\templates\protocol\list.html:43
+msgid "dated"
+msgstr "Күні"
+
+#: .\guide\models.py:138
+msgid "task_title"
+msgstr "Тапсырма тақырыбы"
+
+#: .\guide\models.py:139 .\templates\decision\index.html:15
+#: .\templates\decision\read.html:21 .\templates\protocol\list.html:46
+msgid "solution"
+msgstr "Шешім"
+
+#: .\guide\models.py:140 .\templates\decision\index.html:16
+#: .\templates\decision\read.html:25 .\templates\protocol\list.html:47
+msgid "rating"
+msgstr "Баға"
+
+#: .\guide\views.py:281
+msgid "Test task completed"
+msgstr "Тест тапсырмасы орындалды"
+
+#: .\guide\views.py:283
+msgid "Test task failed"
+msgstr "Тест тапсырмасы орындалмады"
+
+#: .\guide\views.py:288
+msgid "Total Questions"
+msgstr "Жалпы сұрақтар"
+
+#: .\guide\views.py:288
+msgid "Total replied"
+msgstr "Барлығы жауап берді"
+
+#: .\guide\views.py:288
+msgid "Correctly answered"
+msgstr "Дұрыс жауап берді"
+
+#: .\templates\base.html:35
+msgid "Home"
+msgstr "Үй"
+
+#: .\templates\base.html:45 .\templates\contact.html:8
+msgid "contacts"
+msgstr "Контактілер"
+
+#: .\templates\base.html:48 .\templates\lecture.html:7
+msgid "lectures"
+msgstr "Дәрістер"
+
+#: .\templates\base.html:51 .\templates\video.html:6
+msgid "videos"
+msgstr "Бейне сабақтар"
+
+#: .\templates\base.html:55 .\templates\teststask\run.html:3
+msgid "run test"
+msgstr "Сынақты іске қосыңыз"
+
+#: .\templates\base.html:58 .\templates\tasks.html:7
+msgid "tasks"
+msgstr "Тапсырмалар"
+
+#: .\templates\base.html:61 .\templates\base.html:72
+#: .\templates\protocol\index.html:6 .\templates\protocol\list.html:3
+msgid "protocols"
+msgstr "Хаттамалар"
+
+#: .\templates\base.html:67
+msgid "manager"
+msgstr "Менеджер"
+
+#: .\templates\base.html:73 .\templates\decision\edit.html:5
+#: .\templates\decision\index.html:6 .\templates\decision\read.html:5
+#: .\templates\protocol\list.html:36
+msgid "decisions"
+msgstr "Шешімдер"
+
+#: .\templates\base.html:83 .\templates\registration\my_account.html:4
+#: .\templates\registration\my_account.html:10
+msgid "My account"
+msgstr "Менің аккаунтым"
+
+#: .\templates\base.html:84
+#: .\templates\registration\password_change_form.html:9
+#: .\templates\registration\password_change_form.html:14
+msgid "Change password"
+msgstr "Құпия сөзді өзгерту"
+
+#: .\templates\base.html:86
+msgid "Log out"
+msgstr "Шығу"
+
+#: .\templates\base.html:91
+msgid "Entrance"
+msgstr "Кіру"
+
+#: .\templates\base.html:92 .\templates\registration\signup.html:4
+#: .\templates\registration\signup.html:10
+msgid "Sign up"
+msgstr "Тіркелу"
+
+#: .\templates\category\create.html:3 .\templates\category\index.html:13
+#: .\templates\category\index.html:31 .\templates\question\create.html:3
+#: .\templates\question\create.html:9 .\templates\question\index.html:14
+#: .\templates\question\index.html:35 .\templates\teststask\create.html:3
+#: .\templates\teststask\index.html:17 .\templates\teststask\index.html:39
+msgid "Create"
+msgstr "Жасау"
+
+#: .\templates\category\create.html:11 .\templates\category\edit.html:11
+#: .\templates\decision\edit.html:12 .\templates\question\create.html:15
+#: .\templates\question\edit.html:15 .\templates\teststask\create.html:13
+#: .\templates\teststask\edit.html:13
+msgid "Save"
+msgstr "Сақтау"
+
+#: .\templates\category\create.html:12 .\templates\category\edit.html:12
+#: .\templates\category\read.html:17 .\templates\decision\edit.html:13
+#: .\templates\decision\read.html:38 .\templates\question\create.html:16
+#: .\templates\question\edit.html:16 .\templates\question\index.html:32
+#: .\templates\question\read.html:74 .\templates\teststask\create.html:14
+#: .\templates\teststask\edit.html:14 .\templates\teststask\read.html:31
+#: .\templates\teststask\run.html:65
+msgid "Back"
+msgstr "Артқа"
+
+#: .\templates\category\edit.html:3 .\templates\category\index.html:21
+#: .\templates\decision\edit.html:3 .\templates\decision\index.html:33
+#: .\templates\question\edit.html:3 .\templates\question\edit.html:9
+#: .\templates\question\index.html:22 .\templates\teststask\edit.html:3
+#: .\templates\teststask\index.html:29
+msgid "Change"
+msgstr "Өзгерту"
+
+#: .\templates\category\index.html:3 .\templates\decision\index.html:3
+#: .\templates\protocol\index.html:3 .\templates\question\index.html:3
+#: .\templates\teststask\index.html:3 .\templates\teststask\list.html:3
+msgid "List"
+msgstr "Тізім"
+
+#: .\templates\category\index.html:12
+msgid "сategory_title"
+msgstr "Санат тақырыбы"
+
+#: .\templates\category\index.html:22 .\templates\category\read.html:3
+#: .\templates\decision\index.html:34 .\templates\decision\read.html:3
+#: .\templates\question\index.html:23 .\templates\question\read.html:3
+#: .\templates\teststask\index.html:30 .\templates\teststask\read.html:3
+msgid "View"
+msgstr "Көру"
+
+#: .\templates\category\index.html:23 .\templates\question\index.html:24
+#: .\templates\teststask\index.html:31
+msgid "Delete"
+msgstr "Жою"
+
+#: .\templates\decision\index.html:13 .\templates\decision\read.html:8
+#: .\templates\protocol\index.html:13 .\templates\protocol\list.html:15
+#: .\templates\protocol\list.html:44
+msgid "user"
+msgstr "Пайдаланушы"
+
+#: .\templates\decision\index.html:14 .\templates\decision\read.html:17
+#: .\templates\protocol\list.html:45 .\templates\question\read.html:8
+#: .\templates\teststask\read.html:9
+msgid "title"
+msgstr "тақырып"
+
+#: .\templates\index.html:4
+msgid "App name"
+msgstr "Компьютерлік графика"
+
+#: .\templates\lecture.html:9
+msgid "Lecture"
+msgstr "Дәріс"
+
+#: .\templates\protocol\index.html:16 .\templates\protocol\list.html:18
+#: .\templates\teststask\read.html:14
+msgid "details"
+msgstr "Егжей"
+
+#: .\templates\protocol\list.html:7
+msgid "tests"
+msgstr "Сынақтар"
+
+#: .\templates\question\index.html:6 .\templates\teststask\index.html:16
+#: .\templates\teststask\index.html:27
+msgid "questions"
+msgstr "Сұрақтар"
+
+#: .\templates\registration\logged_out.html:4
+#: .\templates\registration\login.html:4
+#: .\templates\registration\password_change_done.html:3
+#: .\templates\registration\password_change_form.html:3
+#: .\templates\registration\password_reset_complete.html:4
+#: .\templates\registration\password_reset_confirm.html:4
+#: .\templates\registration\password_reset_done.html:4
+#: .\templates\registration\password_reset_form.html:4
+#: .\templates\registration\register_done.html:4
+msgid "App Name"
+msgstr "Компьютерлік графика"
+
+#: .\templates\registration\logged_out.html:6
+msgid "Logged out!"
+msgstr "Жүйеден шықтыңыз!"
+
+#: .\templates\registration\logged_out.html:7
+msgid "Login again"
+msgstr "Қайтадан кіріңіз"
+
+#: .\templates\registration\login.html:7
+msgid "Incorrect login or password"
+msgstr "Қате логин немесе құпия сөз"
+
+#: .\templates\registration\login.html:12
+msgid "You dont have access"
+msgstr "Сізде рұқсат жоқ"
+
+#: .\templates\registration\login.html:14
+msgid "Login to see this page"
+msgstr "Бұл бетті көру үшін жүйеге кіріңіз"
+
+#: .\templates\registration\login.html:22
+msgid "Authorization"
+msgstr "Авторизация"
+
+#: .\templates\registration\login.html:26
+msgid "Login"
+msgstr "Кіру"
+
+#: .\templates\registration\login.html:31
+msgid "Lost password?"
+msgstr "Құпия сөзді жоғалттыңыз ба?"
+
+#: .\templates\registration\login.html:32
+#: .\templates\registration\signup.html:14
+msgid "Create an account"
+msgstr "Аккаунты құру"
+
+#: .\templates\registration\my_account.html:14
+msgid "Save changes"
+msgstr "Өзгерістерді сақтау"
+
+#: .\templates\registration\password_change_done.html:5
+msgid "Password changed"
+msgstr "Құпия сөз өзгертілді"
+
+#: .\templates\registration\password_reset_complete.html:6
+msgid "Password reset completed!"
+msgstr "Құпия сөзді қалпына келтіру аяқталды!"
+
+#: .\templates\registration\password_reset_complete.html:7
+msgid "Log in again?"
+msgstr "Қайтадан кіру керек пе?"
+
+#: .\templates\registration\password_reset_confirm.html:5
+#: .\templates\registration\password_reset_confirm.html:12
+msgid "Password reset confirmation"
+msgstr "Құпия сөзді қалпына келтіруді растау"
+
+#: .\templates\registration\password_reset_confirm.html:17
+#: .\templates\registration\password_reset_form.html:10
+#: .\templates\registration\password_reset_form.html:15
+msgid "Reset password"
+msgstr "Құпия сөзді қалпына келтіру"
+
+#: .\templates\registration\password_reset_confirm.html:24
+msgid "Please enter (and confirm) your new password."
+msgstr "Жаңа құпия сөзіңізді енгізіңіз (және растаңыз)."
+
+#: .\templates\registration\password_reset_confirm.html:30
+msgid "New password:"
+msgstr "Жаңа Құпия Сөз:"
+
+#: .\templates\registration\password_reset_confirm.html:35
+msgid "Confirm password:"
+msgstr "Құпия сөзді растау:"
+
+#: .\templates\registration\password_reset_confirm.html:46
+msgid "Password reset failed"
+msgstr "Құпия сөзді қалпына келтіру сәтсіз аяқталды"
+
+#: .\templates\registration\password_reset_confirm.html:47
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Құпия сөзді қалпына келтіру сілтемесі жарамсыз болды, себебі ол әлдеқашан "
+"пайдаланылды. Жаңа құпия сөзді қалпына келтіруді сұраңыз"
+
+#: .\templates\registration\password_reset_done.html:6
+msgid "Password reset"
+msgstr "Құпия сөзді қалпына келтіру"
+
+#: .\templates\registration\password_reset_done.html:7
+msgid "Check your email"
+msgstr "Электрондық поштаңызды тексеріңіз"
+
+#: .\templates\registration\password_reset_email.html:2
+msgid "Asked password reset email"
+msgstr "Құпия сөзді қалпына келтіру электрондық поштасы сұралды"
+
+#: .\templates\registration\password_reset_email.html:2
+msgid "Follow the link below:"
+msgstr "Төмендегі сілтеме бойынша өтіңіз:"
+
+#: .\templates\registration\register_done.html:10
+msgid "Welcome"
+msgstr "Қош келдіңіз"
+
+#: .\templates\registration\register_done.html:11
+msgid "Your account has been successfully created."
+msgstr "Есептік жазбаңыз сәтті жасалды."
+
+#: .\templates\registration\register_done.html:11
+#: .\templates\registration\signup.html:18
+msgid "Log in"
+msgstr "Кіру"
+
+#: .\templates\registration\signup.html:18
+msgid "Already have an account?"
+msgstr "Есептік жазбаңыз әлдеқашан бар ма?"
+
+#: .\templates\tasks.html:54
+msgid "Apply"
+msgstr "Қолдану"
+
+#: .\templates\teststask\list.html:6
+msgid "Select Test"
+msgstr "Сынақ опциясын таңдаңыз"
+
+#: .\templates\teststask\list.html:23
+msgid "Run"
+msgstr "Жүгіру"
+
+#: .\templates\teststask\run.html:66
+msgid "Accept"
+msgstr "Қабылдау"
+
+#: .\templates\teststask\run.html:67
+msgid "Timer"
+msgstr "Таймер"
+
+#: .\templates\teststask\run.html:71
+msgid "Not question"
+msgstr "Сұрақ емес"

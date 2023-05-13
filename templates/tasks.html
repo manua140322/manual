@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{% endblock title %}
+{% block header %}{% endblock header %} 
+{% block content %}
+<h1 align="center">{% trans "tasks" %}</h1>
+<div class="row">
+	<div class="container-fluid" style="padding: 5px" >
+			<ul class="nav nav-tabs nav-justified">
+				<li class="nav-item">
+					<a class="nav-link active" data-toggle="tab" href="#page1">1</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#page2">2</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#page3">3</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#page4">4</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#page5">5</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#page6">6</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#page7">7</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#page8">8</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#page9">9</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#page10">10</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div id="page1" class="container tab-pane active">
+					<h3>№1 тапсырма</h3>
+					<h4>Adobe Photoshop программасын жіберіп,  skull.tif және Big sky.tif файлдарын ашыңыз(Файл\Ашу).</h4>
+					<form name="form1" id="form1"	method="post">
+						{% csrf_token %}
+						<div align="center">
+							<h4>Жауабыңызды енгізіңіз:</h4>	
+							<textarea name="decision1" id="decision1" cols="100" rows="10"></textarea>
+						</div>	
+						<br>
+						<div align="center">
+							<button type="submit" onclick="return confirm('Отправить решение?')" class="btn btn-outline-success" style="width:100px">{% trans "Apply" %}</button>
+						</div>				
+					</form>
+				</div>
+				<div id="page2" class="container tab-pane">
+					<h3>№2 тапсырма</h3>
+					<h4>Big sky.tif динамикалық диапозон бейнесін жақсартыңыз(Бейне\Коррекция\Деңгей\Авто).</h4>
+					<form name="form2" id="form2"	method="post">
+						{% csrf_token %}
+						<div align="center">
+							<h4>Жауабыңызды енгізіңіз:</h4>	
+							<textarea name="decision2" id="decision2" cols="100" rows="10"></textarea>
+						</div>	
+						<br>
+						<div align="center">
+							<button type="submit" onclick="return confirm('Отправить решение?')" class="btn btn-outline-success" style="width:100px">apply</button>
+						</div>				
+					</form>
+				</div>
+				<div id="page3" class="container tab-pane">
+					<h3>№3 тапсырма</h3>
+					<h4>Skull.tif  файлындағы Көпбұрышты Лассо құралын таңдап бассүйектің жіберуін орындаңыз.</h4>					
+					<form name="form3" id="form3"	method="post">
+						{% csrf_token %}
+						<div align="center">
+							<h4>Жауабыңызды енгізіңіз:</h4>	
+							<textarea name="decision3" id="decision3" cols="100" rows="10"></textarea>
+						</div>	
+						<br>
+						<div align="center">
+							<button type="submit" onclick="return confirm('Отправить решение?')" class="btn btn-outline-success" style="width:100px">apply</button>
+						</div>				
+					</form>
+				</div>
+				<div id="page4" class="container tab-pane">
+					<h3>№4 тапсырма</h3>
+					<h4>Skull.tif  бейнесін жіберу контурына канал жаратыңыз. Ол үшін канал палитрінде жаңа канал контурын сақтау кнопкасына шертіңіз.</h4>					
+					<form name="form4" id="form4"	method="post">
+						{% csrf_token %}
+						<div align="center">
+							<h4>Жауабыңызды енгізіңіз:</h4>	
+							<textarea name="decision4" id="decision4" cols="100" rows="10"></textarea>
+						</div>	
+						<br>
+						<div align="center">
+							<button type="submit" onclick="return confirm('Отправить решение?')" class="btn btn-outline-success" style="width:100px">apply</button>
+						</div>				
+					</form>
+				</div>
+				<div id="page5" class="container tab-pane">
+					<h3>№5 тапсырма</h3>
+					<h4>Бөліп шығарған бассүйек динамикалық диапозон бейнесін жақсартыңыз.</h4>					
+					<form name="form5" id="form5"	method="post">
+						{% csrf_token %}
+						<div align="center">
+							<h4>Жауабыңызды енгізіңіз:</h4>	
+							<textarea name="decision5" id="decision5" cols="100" rows="10"></textarea>
+						</div>	
+						<br>
+						<div align="center">
+							<button type="submit" onclick="return confirm('Отправить решение?')" class="btn btn-outline-success" style="width:100px">apply</button>
+						</div>				
+					</form>
+				</div>
+				<div id="page6" class="container tab-pane">
+					<h3>№6 тапсырма</h3>
+					<h4>0,5 коэффициентін беріп, бөліп шығарған бассүйек бейнесінің гамма-коррекциясын орындаңыз(Бейне\Коррекция\Деңгей).</h4>					
+					<form name="form6" id="form6"	method="post">
+						{% csrf_token %}
+						<div align="center">
+							<h4>Жауабыңызды енгізіңіз:</h4>	
+							<textarea name="decision6" id="decision6" cols="100" rows="10"></textarea>
+						</div>	
+						<br>
+						<div align="center">
+							<button type="submit" onclick="return confirm('Отправить решение?')" class="btn btn-outline-success" style="width:100px">apply</button>
+						</div>				
+					</form>
+				</div>
+				<div id="page7" class="container tab-pane">
+					<h3>№7 тапсырма</h3>
+					<h4>Бөліп шығарған бассүйек бейнесіне өте жоғарғы резкості сүзгіш қолданыңыз</h4>					
+					<form name="form7" id="form7"	method="post">
+						{% csrf_token %}
+						<div align="center">
+							<h4>Жауабыңызды енгізіңіз:</h4>	
+							<textarea name="decision7" id="decision7" cols="100" rows="10"></textarea>
+						</div>	
+						<br>
+						<div align="center">
+							<button type="submit" onclick="return confirm('Отправить решение?')" class="btn btn-outline-success" style="width:100px">apply</button>
+						</div>				
+					</form>
+				</div>
+				<div id="page8" class="container tab-pane">
+					<h3>№8 тапсырма</h3>
+					<h4>Бассүйек бейнесін Айырбастыру буферіне көшіріп алыңыз.</h4>					
+					<form name="form8" id="form8"	method="post">
+						{% csrf_token %}
+						<div align="center">
+							<h4>Жауабыңызды енгізіңіз:</h4>	
+							<textarea name="decision8" id="decision8" cols="100" rows="10"></textarea>
+						</div>	
+						<br>
+						<div align="center">
+							<button type="submit" onclick="return confirm('Отправить решение?')" class="btn btn-outline-success" style="width:100px">apply</button>
+						</div>				
+					</form>
+				</div>
+				<div id="page9" class="container tab-pane">
+					<h3>№9 тапсырма</h3>
+					<h4>Skull.tif –тан бассүйек бейнесіне жабыстырыңыз.</h4>					
+					<form name="form9" id="form9"	method="post">
+						{% csrf_token %}
+						<div align="center">
+							<h4>Жауабыңызды енгізіңіз:</h4>	
+							<textarea name="decision9" id="decision9" cols="100" rows="10"></textarea>
+						</div>	
+						<br>
+						<div align="center">
+							<button type="submit" onclick="return confirm('Отправить решение?')" class="btn btn-outline-success" style="width:100px">apply</button>
+						</div>				
+					</form>
+				</div>
+				<div id="page10" class="container tab-pane">
+					<h3>№10 тапсырма</h3>
+					<h4>Қабат палитрінде жаңа қабаттың 50 процентіне деңгей орналастырыңыз</h4>					
+					<form name="form10" id="form10"	method="post">
+						{% csrf_token %}
+						<div align="center">
+							<h4>Жауабыңызды енгізіңіз:</h4>	
+							<textarea name="decision10" id="decision10" cols="100" rows="10"></textarea>
+						</div>	
+						<br>
+						<div align="center">
+							<button type="submit" onclick="return confirm('Отправить решение?')" class="btn btn-outline-success" style="width:100px">apply</button>
+						</div>				
+					</form>
+				</div>
+			</div>
+		</div>		
+</div>
+{% endblock content %}
