@@ -51,6 +51,10 @@ def lecture(request):
 def practice(request):
     return render(request, "practice/index.html")
 
+from django.contrib.auth import logout
+def logoutUser(request):
+    logout(request)
+    return render(request, "index.html")
 ###################################################################################################
 
 # Список для изменения с кнопками создать, изменить, удалить
