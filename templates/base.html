@@ -63,8 +63,8 @@
 								<li><a class="dropdown-item" href="{% url 'teststask_index' %}">{% trans "teststasks" %}</a></li>						
 								<li><a class="dropdown-item" href="{% url 'protocol_index' %}">{% trans "protocols" %}</a></li>	
 							{% else %}
-								<li><a class="nav-link" href="{% url 'teststask_list' %}">{% trans "tests" %}</a></li>
-								<li><a class="nav-link" href="{% url 'protocol_list' %}">{% trans "protocols" %}</a></li>									
+								<li><a class="dropdown-item" href="{% url 'teststask_list' %}">{% trans "tests" %}</a></li>
+								<li><a class="dropdown-item" href="{% url 'protocol_list' %}">{% trans "protocols" %}</a></li>									
 							{% endif %}
 							<div class="dropdown-divider"></div>
 							<li><a class="dropdown-item" href="{% url 'my_account' %}">{% trans "My account" %}</a></li>
