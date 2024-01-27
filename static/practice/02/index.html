@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Элемент meta определяет метаданные документа. -->
+	<meta charset="utf-8">
+	<!-- Мета-теги для адаптивной вёрстки -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Bootstrap CSS-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<!-- Дополнительный JavaScript; Bootstrap в связке с Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<!-- Стили пользователя-->
+	<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+	<div class="container" style="padding: 5px" >
+		<div class="row justify-content-center">
+			<a href="../index.html"><h2>Практические работы</h2></a>			
+		</div>
+		<div class="row justify-content-center">
+			<h3>Практическая работа №2: Создание базы данных с использованием фреймворка Django</h3>			
+		</div>
+		<div style="margin-top:25px;">		
+			
+			<p>Цель практической работы: закрепление и расширение знаний, полученных обучающихся при теоретическом изучении предмета, приобретение конкретных практических навыков создания базы данных с использованием фреймворка Django.</p>
+			<p> </p>
+			<p><b>Методические указания к выполнению работы:</b></p>
+			<p>Для хранения данных в веб-приложении, как правило, применяются базы данных. При этом фреймворк Django уже по умолчанию предоставляет удобный функционал для работы с различными системами баз данных.</p>
+			<p>База данных создается с использованием pgAdmin.</p>
+			<p>Для работы с базами данных в проекте Django в файле <b>settings.py</b>определен параметр DATABASES.</p>
+			<p>Конфигурация каждого подключения может состоять из ряда параметров, по умолчанию указываются только два параметра. Параметр ENGINE указывает на используемый движок для доступа к БД. В данном случае это пакет django.db.backends.postgresql_psycopg2.</p>
+			<p>NAME указывает на путь к БД.</p>
+			<p>USER имя пользователя БД.</p>
+			<p>PASSWORD пароль пользователя БД.</p>
+			<p>HOST хост базы данных.</p>
+			<p>PORT порт для подключения.</p>
+			<p>Пример настройки локального подключения к БД:</p>
+			<p>DATABASES = {</p>
+			<p>    'default': {</p>
+			<p>        'ENGINE': 'django.db.backends.postgresql_psycopg2',</p>
+			<p>        'NAME': 'price',</p>
+			<p>        'USER' : 'customer',</p>
+			<p>        'PASSWORD' : 'customer',</p>
+			<p>        'HOST' : '127.0.0.1',</p>
+			<p>        'PORT' : '5432',</p>
+			<p>    }</p>
+			<p>}</p>
+			<p>Пример настройки сетевого подключения к БД:</p>
+			<p>DATABASES = {</p>
+			<p>    'default': {</p>
+			<p>        'ENGINE': 'django.db.backends.postgresql_psycopg2',</p>
+			<p>        'NAME': 'price_gezx',</p>
+			<p>        'USER' : 'price_admin',</p>
+			<p>        'PASSWORD' : '4sZR3Weoa7NemVbuw8pyGZibh8Y3OO26',</p>
+			<p>        'HOST' : 'dpg-cib6ful9aq03rjma9080-a.frankfurt-postgres.render.com',</p>
+			<p>        'PORT' : '5432',</p>
+			<p>    }</p>
+			<p>}</p>
+			<p>Для работы с БД в файле <b>settings.py</b>должны быть подключены приложения:</p>
+			<p>INSTALLED_APPS = [</p>
+			<p>    'django.contrib.admin',</p>
+			<p>    'django.contrib.auth',</p>
+			<p>    'django.contrib.contenttypes',</p>
+			<p>    'django.contrib.sessions',</p>
+			<p>    …</p>
+			<p>]</p>
+			<p>Модели в Django описывают структуру используемых данных. Используемые в программе данные хранятся в базах данных, и с помощью моделей как раз осуществляется взаимодействие с базой данных.</p>
+			<p>При создании приложения по умолчанию в его каталог добавляется файл models.py, который применяется для определения моделей. Модель представляет класс, унаследованный от django.db.models.Model.</p>
+			<p>Для изменения файла models.py введем следующий код:</p>
+			<p>from django.db import models</p>
+			<p>class Prices(models.Model):    </p>
+			<p>    datep = models.DateTimeField("Дата")</p>
+			<p>    store = models.CharField("Место покупки", max_length=128)</p>
+			<p>    product = models.CharField("Продукт (товар)", max_length=256)</p>
+			<p>    cost = models.DecimalField("Цена", max_digits=6, decimal_places=2)</p>
+			<p>    details = models.TextField("Подробности", blank=True, null=True)</p>
+			<p>    class Meta:</p>
+			<p>        db_table = 'prices'</p>
+			<p>        indexes = [</p>
+			<p>            models.Index(fields=['datep']),</p>
+			<p>            models.Index(fields=['store']),</p>
+			<p>            models.Index(fields=['product']),</p>
+			<p>        ]</p>
+			<p>    </p>
+			<p><img height=385 id="Рисунок 66" src="image001.jpg"></p>
+			<p>Каждая модель сопоставляется с определенной таблицей в базе данных. Поскольку в созданной БД нет таблицы, которая хранит объекты модели Prices, необходимо создать и выполнить миграцию. Миграция преобразует базу данных в соответствии с определением моделей.</p>
+			<p>Для этого, прежде всего, необходимо создать миграцию с помощью следующей команды:</p>
+			<p>python manage.py makemigrations</p>
+			<p><img height=239 id="Рисунок 67" src="image002.jpg"></p>
+			<p>После этого в приложении в папке migrations появится новый автоматически созданный файл, имеющий примерно следующее содержимое:</p>
+			<p>from django.db import migrations, models</p>
+			<p>class Migration(migrations.Migration):</p>
+			<p>    initial = True</p>
+			<p>    dependencies = [</p>
+			<p>    ]</p>
+			<p>    operations = [</p>
+			<p>        migrations.CreateModel(</p>
+			<p>            name='Prices',</p>
+			<p>            fields=[</p>
+			<p>                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),</p>
+			<p>                ('datep', models.DateTimeField(verbose_name='Дата')),</p>
+			<p>                ('store', models.CharField(max_length=128, verbose_name='Место покупки')),</p>
+			<p>                ('product', models.CharField(max_length=256, verbose_name='Продукт (товар)')),</p>
+			<p>                ('cost', models.DecimalField(decimal_places=2, max_digits=6, verbose_name='Цена')),</p>
+			<p>                ('details', models.TextField(blank=True, null=True, verbose_name='Подробности')),</p>
+			<p>            ],</p>
+			<p>            options={</p>
+			<p>                'db_table': 'prices',</p>
+			<p>                'indexes': [models.Index(fields=['datep'], name='prices_datep_906236_idx'), models.Index(fields=['store'], name='prices_store_3a7df0_idx'), models.Index(fields=['product'], name='prices_product_519819_idx')],</p>
+			<p>            },</p>
+			<p>        ),</p>
+			<p>    ]</p>
+			<p>Это и является миграцией. Здесь важно отметить, что создается не пять, а шесть полей - поле id, которое будет представлять первичный ключ, добавляется по умолчанию. Поэтому в принципе в самой модели нет необходимости явным образом определять какой-либо идентификатор.</p>
+			<p><img height=393 id="Рисунок 68" src="image003.jpg"></p>
+			<p>Для заполнения таблицы «prices» начальными данными можно воспользоваться миграцией данных. Создать пустую миграцию (Django создаст файл миграции, положит его в правильное место, создаст название и добавит необходимые зависимости). Название и расположение файла будет выведено на экран монитора. Для этого необходимо выполнить следующую команду:</p>
+			<p>python manage.py makemigrations --empty bestprice</p>
+			<p>здесь bestprice –имя созданного в работе приложения.</p>
+			<p><img height=197 id="Рисунок 69" src="image004.jpg"></p>
+			<p>Далее нужно внести изменения в автоматически созданный файл.</p>
+			<p># Generated by Django 3.2.6 on 2023-08-28 03:46</p>
+			<p>from django.db import migrations</p>
+			<p>from django.contrib.auth.models import User</p>
+			<p>from django.contrib.auth.models import Group</p>
+			<p>import random</p>
+			<p>from datetime import datetime as DT</p>
+			<p>from datetime import timedelta</p>
+			<p>def get_random_date(start, end):</p>
+			<p>    delta = end - start</p>
+			<p>    return start + timedelta(random.randint(0, delta.days))</p>
+			<p>def beginning(apps, schema_editor):</p>
+			<p>    # Суперпользователь </p>
+			<p>    user = User.objects.create_superuser(username='root',</p>
+			<p>    email='best.price.test@mail.ru',</p>
+			<p>    password='SsNn5678+-@')</p>
+			<p>    print("Суперпользователь создан")</p>
+			<p>    </p>
+			<p>    # Группа менеджеров</p>
+			<p>    managers = Group.objects.get_or_create(name = 'Managers')</p>
+			<p>    managers = Group.objects.get(name='Managers')</p>
+			<p>    print("Группа менеджеров создана")</p>
+			<p>    </p>
+			<p>    # Пользователь с ролью менеджера id</p>
+			<p>    user = User.objects.create_user(username='manager', password='Ss0066+-')</p>
+			<p>    managers.user_set.add(user)</p>
+			<p>    print("Менеджер добавлен в группу менеджеров")</p>
+			<p>    # Диапазон дат</p>
+			<p>    start_dt = DT.strptime('2022-01-01', '%Y-%m-%d')</p>
+			<p>    end_dt = DT.strptime('2022-08-31', '%Y-%m-%d')</p>
+			<p>    Prices = apps.get_model("bestprice", "Prices")</p>
+			<p>    </p>
+			<p>    for i in range(10000):</p>
+			<p>        prices = Prices()</p>
+			<p>        prices.datep = get_random_date(start_dt, end_dt)</p>
+			<p>        prices.store = 'Магазин ' + str(random.randint(1,10))</p>
+			<p>        prices.product = 'Товар ' + str(random.randint(1,1000))</p>
+			<p>        prices.cost = random.randint(100,5000)</p>
+			<p>        prices.details = ''</p>
+			<p>        prices.save()</p>
+			<p>        print(i)</p>
+			<p>    </p>
+			<p>class Migration(migrations.Migration):</p>
+			<p>    dependencies = [</p>
+			<p>        ('bestprice', '0001_initial'),</p>
+			<p>    ]</p>
+			<p>    operations = [</p>
+			<p>        migrations.RunPython(beginning),</p>
+			<p>    ]</p>
+			<p><img width=597 id="Рисунок 70" src="image005.jpg"></p>
+			<p>За добавление данных в таблицу «prices» отвечает следующий фрагмент кода:</p>
+			<p>for i in range(10000):</p>
+			<p>    prices = Prices()</p>
+			<p>    prices.datep = get_random_date(start_dt, end_dt)</p>
+			<p>    prices.store = 'Магазин ' + str(random.randint(1,10))</p>
+			<p>    prices.product = 'Товар ' + str(random.randint(1,1000))</p>
+			<p>    prices.cost = random.randint(100,5000)</p>
+			<p>    prices.details = ''</p>
+			<p>    prices.save()</p>
+			<p>Далее необходимо выполнить миграцию:</p>
+			<p><a name="_Hlk89970160">python manage.py migrate</a></p>
+			<p> </p>
+			<p><img width=594 id="Рисунок 71" src="image006.jpg"></p>
+			<p>Созданная база данных готова к работе.</p>
+			<p><b>Задание:</b></p>
+			<p>Создать согласно варианту базу данных и заполнить таблицы созданной базы данных записями с использованием фреймворка Django. </p>
+			<p><b>Контрольные вопросы:</b></p>
+			<p>1. Параметр для работы с базами данных в проекте Django в файле </p>
+			<p>2. Для чего предназначен файл models.py при создании приложения?</p>
+			<p>3. Команда для создания миграции.</p>
+		
+		</div>
+		<div align="center">
+			<a style="align:center" href="javascript:history.back();">Назад</a>	
+			<a>|</a>
+			<a style="align:center" href="javascript:scroll(0,0)">Наверх</a>	
+		</div>				
+	</div>	<!-- /container -->
+</body>
+</html>

@@ -1,0 +1,1944 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{% trans "lecture" %}{% endblock title %}
+{% block header %}
+{% endblock header %}
+{% block content %}
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"MS Mincho";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:"\@";}
+@font-face
+	{font-family:"\@MS Mincho";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:14.0pt;
+	font-family:"Times New Roman",serif;}
+h1
+	{mso-style-link:"Заголовок 1 Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:14.0pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+h2
+	{mso-style-link:"Заголовок 2 Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:14.0pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+h3
+	{mso-style-link:"Заголовок 3 Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:13.5pt;
+	font-family:"Times New Roman",serif;
+	font-weight:bold;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{margin-right:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{mso-style-link:"Основной текст Знак";
+	margin-right:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+	{mso-style-link:"Текст Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:10.0pt;
+	font-family:"Courier New";}
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Текст выноски Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:8.0pt;
+	font-family:"Tahoma",sans-serif;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-link:"Абзац списка Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:14.0pt;
+	font-family:"Times New Roman",serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{mso-style-link:"Абзац списка Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:14.0pt;
+	font-family:"Times New Roman",serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{mso-style-link:"Абзац списка Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:14.0pt;
+	font-family:"Times New Roman",serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{mso-style-link:"Абзац списка Знак";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:14.0pt;
+	font-family:"Times New Roman",serif;}
+span.a
+	{mso-style-name:"Абзац списка Знак";
+	mso-style-link:"Абзац списка";
+	font-family:"Times New Roman",serif;}
+span.2
+	{mso-style-name:"Заголовок 2 Знак";
+	mso-style-link:"Заголовок 2";
+	font-family:"Times New Roman",serif;
+	
+	font-weight:bold;}
+span.3
+	{mso-style-name:"Заголовок 3 Знак";
+	mso-style-link:"Заголовок 3";
+	font-family:"Times New Roman",serif;
+	
+	font-weight:bold;}
+p.a0, li.a0, div.a0
+	{mso-style-name:a;
+	margin-right:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+span.spelle
+	{mso-style-name:spelle;}
+span.a1
+	{mso-style-name:"Основной текст Знак";
+	mso-style-link:"Основной текст";
+	font-family:"Times New Roman",serif;}
+span.grame
+	{mso-style-name:grame;}
+p.ad, li.ad, div.ad
+	{mso-style-name:ad;
+	margin-right:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+span.a2
+	{mso-style-name:"Текст выноски Знак";
+	mso-style-link:"Текст выноски";
+	font-family:"Tahoma",sans-serif;}
+p.ab, li.ab, div.ab
+	{mso-style-name:ab;
+	margin-right:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+p.a00, li.a00, div.a00
+	{mso-style-name:a0;
+	margin-right:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+p.ac, li.ac, div.ac
+	{mso-style-name:ac;
+	margin-right:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+span.a3
+	{mso-style-name:"Текст Знак";
+	mso-style-link:Текст;
+	font-family:"Courier New";}
+p.t, li.t, div.t
+	{mso-style-name:t;
+	margin-right:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	text-indent:35.45pt;
+	
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	color:black;}
+span.1
+	{mso-style-name:"Заголовок 1 Знак";
+	mso-style-link:"Заголовок 1";
+	font-family:"Times New Roman",serif;
+	
+	font-weight:bold;}
+p.a4, li.a4, div.a4
+	{mso-style-name:Таблица;
+	mso-style-link:"Таблица Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:0cm;
+	
+	font-size:14.0pt;
+	font-family:"Times New Roman",serif;}
+span.a5
+	{mso-style-name:"Таблица Знак";
+	mso-style-link:Таблица;
+	font-family:"Times New Roman",serif;
+	}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:10.0pt;
+	line-height:115%;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 42.5pt 2.0cm 3.0cm;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<div class=WordSection1>
+	<div id="container">
+		<div class="row justify-content-md-center" style="padding:20px;">
+			<h1 class="display-4" align="center">Лекции</h1>
+		</div>
+		<div>							
+			<ul>
+				<li><a href="#lecture1">Лекция 1. Основы параллельных вычислений в базах данных</a></li>
+				<li><a href="#lecture2">Лекция 2. Анализ существующих методов выбора архитектуры параллельных баз данных.</a></li>
+				<li><a href="#lecture3">Лекция 3. Требования к параллельным базам данных. Основные формы параллельной обработки запросов в параллельных системах данных.</a></li>
+				<li><a href="#lecture4">Лекция 4. Выполнение параллельных запросов в базах данных. Применение облачных и квантовых технологий при создании последовательных и параллельных запросов. </a></li>
+				<li><a href="#lecture5">Лекция 5. Фрагментарный параллелизм. Методы внедрения фрагментарного параллелизма</a></li>
+				<li><a href="#glossary">Глоссарий</a></li>
+			</ul>
+		</div>
+	</div> <!-- /container -->
+	<br>
+	<form name="f1" id="f1" action="">
+		<input type="text" class="t1" name="t1" value="" />
+		<input type="submit" name="b1" value="Поиск" />
+	</form>
+
+	<hr>
+	
+<h1><a name="lecture1">Лекция 1. Основы параллельных вычислений в базах данных.</a></h1>
+<p class=MsoNormal><span lang=KZ>&nbsp;</span></p>
+<h2><span lang=KZ>1.1 Основные понятия параллеллизма в области баз данных. </span></h2>
+<p class=MsoListParagraph>&nbsp;</p>
+<p class=MsoNormal>Параллелизм – это концепция, которая позволяет выполнять
+несколько задач одновременно или параллельно. В контексте баз данных,
+параллелизм относится к способности системы обрабатывать несколько запросов или
+операций одновременно.</p>
+<p class=MsoNormal>Параллелизм может быть реализован на уровне аппаратного
+обеспечения или программного обеспечения. На уровне аппаратного обеспечения
+параллелизм может быть достигнут с помощью многопроцессорных систем или
+многопоточных процессоров, которые могут выполнять несколько инструкций
+одновременно.</p>
+<p class=MsoNormal>На уровне программного обеспечения параллелизм может быть
+достигнут с помощью разделения задач на более мелкие подзадачи, которые могут
+быть выполнены параллельно. Это может быть особенно полезно в базах данных, где
+множество запросов может быть обработано одновременно, ускоряя общее время
+выполнения.</p>
+<p class=MsoNormal>Параллелизм может быть использован для улучшения
+производительности и эффективности системы, позволяя более эффективно
+использовать ресурсы и ускоряя обработку задач. Однако, параллелизм также может
+иметь свои ограничения и проблемы, такие как конфликты доступа к общим ресурсам
+или сложность синхронизации выполнения задач.</p>
+<p class=MsoNormal>Учет степени параллелизма является важным аспектом при
+проектировании и оптимизации систем, особенно в контексте баз данных. Знание
+степени параллелизма позволяет эффективно использовать ресурсы и улучшить
+производительность системы.</p>
+<p class=MsoNormal>Учет степени параллелизма позволяет определить, сколько
+задач или запросов может быть выполнено одновременно. Это позволяет эффективно
+использовать доступные ресурсы, такие как процессоры, память и сетевые
+соединения. Например, если система имеет высокую степень параллелизма, то можно
+распределить задачи между несколькими процессорами или ядрами, чтобы ускорить
+общее время выполнения.</p>
+<p class=MsoNormal>Учет степени параллелизма позволяет оптимизировать
+выполнение задач и запросов, что в свою очередь улучшает производительность
+системы. Если система имеет высокую степень параллелизма, то можно выполнять
+несколько задач одновременно, что сокращает общее время выполнения и
+увеличивает пропускную способность системы.</p>
+<p class=MsoNormal>Учет степени параллелизма также позволяет повысить
+отказоустойчивость системы. Если система имеет возможность выполнять задачи
+параллельно, то при отказе одного из ресурсов или компонентов системы, другие
+ресурсы или компоненты могут продолжать работу независимо. Это позволяет
+снизить вероятность полного отказа системы и обеспечить более надежную работу.</p>
+<p class=MsoNormal>В целом, учет степени параллелизма позволяет оптимизировать
+использование ресурсов, улучшить производительность и повысить
+отказоустойчивость системы. Это важный аспект при проектировании и оптимизации
+баз данных и других систем, где параллельное выполнение задач является ключевым
+фактором.</p>
+<p class=MsoNormal>Степень параллелизма – это мера того, насколько задачи или
+операции могут выполняться одновременно или независимо друг от друга. Измерение
+степени параллелизма позволяет определить, насколько эффективно система может использовать
+параллельные вычисления или выполнение задач.</p>
+<p class=MsoNormal>Первый шаг в измерении степени параллелизма – это анализ
+зависимостей между задачами или операциями. Зависимости могут быть различными:
+данные, управление, ресурсы и т.д. Анализ зависимостей позволяет определить,
+какие задачи могут выполняться параллельно, а какие должны выполняться
+последовательно.</p>
+<p class=MsoNormal>После анализа зависимостей можно определить участки кода или
+операций, которые могут быть выполнены параллельно. Это могут быть независимые
+циклы, функции или блоки кода, которые не зависят друг от друга и могут быть
+выполнены одновременно.</p>
+<p class=MsoNormal>Для измерения степени параллелизма можно использовать время
+выполнения задач или операций. Замер времени выполнения параллельных участков и
+последовательных участков позволяет сравнить их производительность и
+определить, насколько эффективно используется параллелизм.</p>
+<p class=MsoNormal>Использование профилировщиков.</p>
+<p class=MsoNormal>Профилировщики – это инструменты, которые позволяют
+анализировать производительность программы или системы. Они могут предоставлять
+информацию о времени выполнения задач, использовании ресурсов, загрузке
+процессора и других параметрах. Использование профилировщиков позволяет более
+точно измерить степень параллелизма и оптимизировать его использование.</p>
+<p class=MsoNormal>Измерение степени параллелизма является важным шагом при
+проектировании и оптимизации систем, где параллельное выполнение задач является
+ключевым фактором. Это позволяет оптимизировать использование ресурсов,
+улучшить производительность и повысить отказоустойчивость системы.</p>
+<p class=MsoNormal>Преимущества параллелизма:</p>
+<p class=MsoNormal>1. Увеличение производительности: параллельное выполнение
+задач позволяет использовать ресурсы системы более эффективно и ускоряет
+выполнение задач. Это особенно полезно в случае выполнения больших объемов
+работы или задач, требующих высокой вычислительной мощности.</p>
+<p class=MsoNormal>2. Улучшение отзывчивости: параллельное выполнение задач
+позволяет системе обрабатывать несколько задач одновременно, что улучшает
+отзывчивость и позволяет пользователям получать результаты быстрее.</p>
+<p class=MsoNormal>3. Распределение нагрузки: параллельное выполнение задач
+позволяет равномерно распределить нагрузку между процессорами или ядрами, что
+позволяет избежать перегрузки и повышает эффективность использования ресурсов.</p>
+<p class=MsoNormal>4. Улучшение отказоустойчивости: параллельное выполнение
+задач позволяет системе продолжать работу, даже если одна из задач завершается
+с ошибкой или сбоем. Это повышает отказоустойчивость системы и обеспечивает
+непрерывность работы.</p>
+<p class=MsoNormal>Недостатки параллелизма:</p>
+<p class=MsoNormal>1. Сложность программирования: разработка параллельных
+программ может быть сложной задачей, требующей особого подхода и знания
+специфических техник и инструментов. Ошибки в параллельных программах могут
+быть трудно обнаружимы и исправимы.</p>
+<p class=MsoNormal>2. Проблемы синхронизации: параллельное выполнение задач
+требует синхронизации между потоками или процессами, чтобы избежать гонок
+данных и других проблем, связанных с одновременным доступом к общим ресурсам.
+Неправильная синхронизация может привести к ошибкам и непредсказуемому
+поведению программы.</p>
+<p class=MsoNormal>3. Увеличение накладных расходов: параллельное выполнение
+задач требует дополнительных ресурсов, таких как память и процессорное время,
+для управления потоками или процессами. Это может привести к увеличению
+накладных расходов и снижению эффективности использования ресурсов.</p>
+<p class=MsoNormal>4. Зависимость от аппаратного обеспечения: параллельное
+выполнение задач требует наличия поддержки параллелизма в аппаратном
+обеспечении, таком как многопроцессорные системы или многопоточные процессоры.
+В отсутствие такой поддержки, параллельное выполнение задач может быть
+затруднено или невозможно.</p>
+<p class=MsoNormal>Параллелизм широко используется в различных областях, где
+требуется обработка больших объемов данных или выполнение вычислительно сложных
+задач. Вот несколько примеров использования параллелизма:</p>
+<p class=MsoNormal>Вычисления на графических процессорах (GPU).</p>
+<p class=MsoNormal>Графические процессоры (GPU) обладают большим количеством
+ядер и параллельных вычислительных ресурсов, что делает их идеальным
+инструментом для параллельной обработки данных. Они широко используются в
+области компьютерной графики, научных вычислений, машинного обучения и других
+областях, где требуется выполнение большого количества параллельных вычислений.</p>
+<p class=MsoNormal>В базах данных параллелизм используется для ускорения
+выполнения запросов и обработки данных. Например, запросы к базе данных могут
+быть разделены на несколько параллельных потоков, которые выполняются
+одновременно, ускоряя общее время выполнения запроса. Также параллельное
+выполнение операций чтения и записи может улучшить производительность базы
+данных.</p>
+<p class=MsoNormal>Параллелизм используется для обработки изображений и видео,
+таких как сжатие, фильтрация, распознавание образов и другие операции.
+Параллельное выполнение этих операций позволяет обрабатывать большие объемы
+данных быстрее и эффективнее. Также параллелизм используется в симуляциях и
+моделировании для ускорения вычислений и повышения точности моделей. Например,
+в физических симуляциях параллельное выполнение вычислений позволяет
+моделировать сложные физические процессы с большей точностью и в меньшее время.</p>
+<p class=MsoNormal>В области обработки данных в реальном времени, такой как
+финансовые торги, медицинские приложения или системы управления транспортом,
+параллелизм используется для обработки больших объемов данных в кратчайшие
+сроки. Параллельное выполнение операций позволяет обрабатывать данные в режиме
+реального времени и принимать быстрые решения.</p>
+<p class=MsoNormal>Это лишь некоторые примеры использования параллелизма. В
+реальности, параллелизм может быть применен во многих других областях, где
+требуется обработка больших объемов данных или выполнение вычислительно сложных
+задач.</p>
+<p class=MsoNormal>Таблица 1 Сравнение параллелизма</p>
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=0
+ style='width:480.9pt;border-collapse:collapse;border:none'>
+ <thead>
+  <tr>
+   <td width=182 valign=bottom style='width:136.3pt;border:solid windowtext 1.0pt;
+   padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+   <p class=a4>Аспект</p>
+   </td>
+   <td valign=bottom style='border:solid windowtext 1.0pt;border-left:none;
+   padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+   <p class=a4>Параллелизм</p>
+   </td>
+   <td width=181 valign=bottom style='width:135.85pt;border:solid windowtext 1.0pt;
+   border-left:none;padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+   <p class=a4>Последовательность</p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td width=182 valign=top style='width:136.3pt;border:solid windowtext 1.0pt;
+  border-top:none;background:#F9F9F9;padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Определение</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;background:#F9F9F9;padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Выполнение нескольких задач одновременно</p>
+  </td>
+  <td width=181 valign=top style='width:135.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#F9F9F9;padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Выполнение задач поочередно, одна за другой</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=182 valign=top style='width:136.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Использование ресурсов</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Максимальное использование ресурсов системы</p>
+  </td>
+  <td width=181 valign=top style='width:135.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Ограниченное использование ресурсов системы</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=182 valign=top style='width:136.3pt;border:solid windowtext 1.0pt;
+  border-top:none;background:#F9F9F9;padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Скорость выполнения</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;background:#F9F9F9;padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Быстрее выполнение задач</p>
+  </td>
+  <td width=181 valign=top style='width:135.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#F9F9F9;padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Медленнее выполнение задач</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=182 valign=top style='width:136.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Производительность</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Повышение производительности системы</p>
+  </td>
+  <td width=181 valign=top style='width:135.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Низкая производительность системы</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=182 valign=top style='width:136.3pt;border:solid windowtext 1.0pt;
+  border-top:none;background:#F9F9F9;padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Распределение нагрузки</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;background:#F9F9F9;padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Равномерное распределение нагрузки</p>
+  </td>
+  <td width=181 valign=top style='width:135.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#F9F9F9;padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Неравномерное распределение нагрузки</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=182 valign=top style='width:136.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Отказоустойчивость</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Более устойчив к отказам</p>
+  </td>
+  <td width=181 valign=top style='width:135.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:6.0pt 6.0pt 6.0pt 6.0pt'>
+  <p class=a4>Менее устойчив к отказам</p>
+  </td>
+ </tr>
+</table>
+<p class=MsoNormal><span lang=KZ>&nbsp;</span></p>
+<p class=MsoNormal><span lang=KZ>&nbsp;</span></p>
+<h2><span lang=KZ>1.2 Межтранзакционный и внутритранзакционный параллелизм.
+Межзапросный (межоператорный) и внутризапросный (внутриоператорный)
+параллелизм.</span></h2>
+<p class=MsoNormal>Параллелизм в базах данных является важным концептом,
+который позволяет выполнять несколько операций одновременно. Он позволяет
+увеличить производительность системы и сократить время выполнения запросов.
+Однако параллелизм также имеет свои недостатки, такие как возможность
+возникновения конфликтов и сложность управления параллельными операциями.
+Поэтому, при использовании параллелизма необходимо тщательно оценивать степень
+его применимости и принимать соответствующие меры для обеспечения корректности
+и эффективности работы системы.</p>
+<p class=MsoNormal>Межтранзакционный параллелизм подразумевает выполнение
+отдельных транзакций в рамках одной БД. Данный вид параллелизма тесно связан с
+проблемой многопользовательской обработки запросов на однопроцессорных
+системах, поскольку предполагает только блокировку ресурсов СУБД. Является
+наиболее простым видом параллельной обработки и эффективен при большой
+плотности запросов.</p>
+<p class=MsoNormal>Внутритранзакционный параллелизм подразумевает параллельное
+выполнение запросов в рамках одной транзакции. Эго приводит к снижению времени
+выполнения транзакции. Применение методов впутритраизакциопного
+распараллеливания целесообразно в тех случаях, когда необходимо либо
+минимизировать время отклика, либо обеспечить приоритетное выполнение запросов.
+Различают несколько форм внутритранзакционного параллелизма.</p>
+<p class=MsoNormal>Межзапросный параллелизм подразумевает параллельное
+выполнение запросов в рамках одной транзакции. Его реализация в общем случае
+затруднительна, поскольку требуется явное указание зависимостей между
+запросами. Межзапросный параллелизм в коммерческих СУБД применяется редко.</p>
+<p class=MsoNormal>Внутризапросный параллелизм подразумевает выполнение запроса
+посредством его разбиения на элементарные операции и их параллельное
+выполнение. Трансляция логического плана выполнения запроса в физический парал
+лельный план проводится в независимости от пользователя, сформировавшего
+запрос. Внутризапросный параллелизм может быть реализован как межоперационный
+(interoperator) или внутри операционный (intraoperator) параллелизм. В
+соответствие с [97] внутриоперационный параллелизм разделяют на вертикальный и
+горизонтальный.</p>
+<p class=MsoNormal>Вертикальный паралеллкзм подразумевает создание конвейерного
+обработчика запросов, в котором операторы в порядке последовательного
+физического плана выполнения запроса обрабатывают данные порционно следующим
+образом. После того как порция данных обработана, результат передается
+следующему оператору, а текущий оператор продолжает обработку следующей порции.</p>
+<p class=MsoNormal>Горизонтальный параллелизм предполагает, что исходный
+физический план может быть представлен как дерево независимых операций. Другое
+название данного метода - кустовой (bulk) параллелизм - операторы в независимых
+поддеревьях могут выполняться параллельно.</p>
+<p class=MsoNormal>Основной формой внутриоперациопиого параллелизма является
+фрагментарный параллелизм, сутью которого является разбиение массива данных на
+фрагменты и их независимое выполнение. Условно различают горизонтальный
+фрагментарный параллелизм - разделение по кортежам и вертикальный фрагментарный
+параллелизм - разделение по атрибутам.</p>
+<div align="center">
+	<a style="align:center" href="javascript:history.back();">Назад</a>	
+	<a>|</a>
+	<a style="align:center" href="javascript:scroll(0,0)">Наверх</a>	
+</div>				
+<h1><a name="lecture2">Лекция 2. Анализ существующих методов выбора архитектуры параллельных баз данных.</a></h1>
+<h2><a name="_Toc69577397"><span lang=KZ>2.1 Классификация Стоунбрейкера</span></a></h2>
+<p class=MsoNormal>Наиболее распространенной системой классификации
+параллельных систем баз данных является система, предложенная Майклом
+Стоунбрейкером (Michael Stonebraker) в работе. Схематично данная классификация
+изображена на рис. 1. Здесь P обозначает процессор, M – модуль оперативной
+памяти, D – дисковое устройство, N - соединительную сеть.</p>
+<p class=MsoNormal><img width=573 height=201 id="Рисунок 3"
+src="{% static 'images/lecture/image001.gif' %}"
+alt="https://pdbs.susu.ru/CourseManual.files/image036.gif"></p>
+<p class=MsoNormal><a name="_Ref13119991"></a><a name="_Ref13119987"></a>&nbsp;</p>
+<p class=MsoNormal>Рисунок 1. Классификация Стоунбрейкера</p>
+<p class=MsoNormal>В соответствие с классификацией Стоунбрейкера параллельные
+системы баз данных могут быть разделены на следующие три базовых класса в
+зависимости от способа разделения аппаратных ресурсов:</p>
+<p class=MsoNormal>(a) SE (Shared-Everything) - архитектура с разделяемыми
+памятью и дисками;</p>
+<p class=MsoNormal>(б) SD (Shared-Disks) - архитектура с разделяемыми дисками;</p>
+<p class=MsoNormal>(в) SN (Shared-Nothing) - архитектура без совместного
+использования ресурсов.</p>
+<p class=MsoNormal>SE архитектура (в работе эта архитектура обозначается как Shared-Memory)
+представляет системы баз данных, в которых все диски напрямую доступны всем
+процессорам с одинаковым временем доступа и все процессоры разделяют общую
+оперативную память. Межпроцессорные коммуникации в SE системах осуществляются
+через общую оперативную память. Доступ к дискам в SE системах обычно
+осуществляется через общий буферный пул. При этом следует отметить, что каждый
+процессор в SE системе имеет собственную кэш-память.</p>
+<p class=MsoNormal>Существует большое количество параллельных систем баз данных
+с SE архитектурой. По существу, все ведущие коммерческие СУБД сегодня имеют
+реализацию на базе SEархитектуры. В качестве одного из первых примеров
+портирования с однопроцессорной системы на SE архитектуру можно привести
+реализацию DB2 на IBM3090 с 6 процессорами. Другим примером является параллельное
+построение индексов в Informix OnLine 6.0. Следует отметить, однако, что подавляющее
+большинство коммерческих SEсистем использует только межтранзакционный
+параллелизм (то есть внутритранзакционный параллелизм отсутствует). Тем не
+менее, к настоящему моменту создано несколько исследовательских прототипов SE систем,
+использующих внутризапросный параллелизм, например, XPRS, DBS3 и Volcano.</p>
+<p class=MsoNormal>Базовой аппаратной платформой для реализации систем с SE
+архитектурой обычно служит SMP, хотя потенциально SE системы можно строить на
+платформах с архитектурой NUMA и даже MPP с виртуально общей, физически
+распределенной памятью.</p>
+<p class=MsoNormal>SD архитектура представляет системы баз данных, в которых
+любой процессор имеет доступ к любому диску, однако каждый процессор имеет свою
+приватную оперативную память. Процессоры в таких системах соединены посредством
+некоторой высокоскоростной сети, позволяющей осуществлять передачу данных. </p>
+<p class=MsoNormal>Примерами параллельных систем баз данных с SD архитектурой
+являются IBM IMS, Oracle Parallel Server, IBM Parallel Sysplex и др.</p>
+<p class=MsoNormal>SN архитектура характеризуется наличием у каждого процессора
+собственной оперативной памяти и собственного диска. Как и в SD системах,
+процессорные узлы соединены некоторой высокоскоростной сетью, позволяющей
+организовывать обмен сообщениями между процессорами. К настоящему моменту
+создано большое количество исследовательских прототипов и несколько
+коммерческих систем с SN архитектурой, использующих фрагментный параллелизм. В
+качестве примеров исследовательских прототипов SN систем можно привести
+следующие системы: ARBRE, BUBBA, EDS, GAMMA, KARDAMOM, PRISMA.</p>
+<p class=MsoNormal>Примерами коммерческих систем с SN архитектурой являются
+NonStop SQL, Informix PDQ, NCR (Teradata) DBC/1012 и др.</p>
+<p class=MsoNormal><a name="_Toc69577398">&nbsp;</a></p>
+<p class=MsoNormal>2.1 Расширение классификации Стоунбрейкера</p>
+<p class=MsoNormal>Копеланд (Copeland) и Келлер (Keller) предложили в работе
+расширение классификации Стоунбрейкера путем введения двух дополнительных
+классов архитектур параллельных машин баз данных (рис. 1):</p>
+<p class=MsoNormal>(г) CE (Clustered-Everything) - архитектура с SE кластерами,
+объединенными по принципу SN;</p>
+<p class=MsoNormal>(д) CD (Clustered-Disk) - архитектура с SD кластерами,
+объединенными по принципу SN. Граница SD кластеров на рис. 2 распространены на
+общую (глобальную) соединительную сеть, так как в них может присутствовать
+собственная (локальная) соединительная сеть.</p>
+<p class=MsoNormal><img width=622 height=207 id="Рисунок 2"
+src="{% static 'images/lecture/image002.gif' %}"
+alt="https://pdbs.susu.ru/CourseManual.files/image038.gif"></p>
+<p class=MsoNormal><a name="_Ref16347324">&nbsp;</a></p>
+<p class=MsoNormal>Рисунок 2. Расширение классификации Стоунбрейкера</p>
+<p class=MsoNormal>Эти архитектуры также получили название иерархических. На рис.
+2 изображены двухуровневые иерархии. Однако классификационный подход Копеланда
+и Келлера легко может быть распространен на архитектуры с тремя и более
+уровнями иерархии. В качестве примера можно привести трехуровневую
+иерархическую архитектуру CD2. Данная архитектура была использована при проектировании
+системы Омега. <a name="_Toc69577399"></a></p>
+<p class=MsoNormal>Гибридная архитектура CDN</p>
+<p class=MsoNormal>Эрхард Рам в работе предложил рассматривать гибридные
+архитектуры. Гибридные архитектуры нельзя отнести ни к одному из выше описанных
+классов. В качестве примера гибридной архитектур можно привести архитектуру CDN.
+Данная архитектура строится как набор однотипных SD кластеров, объединенных по
+принципу SN. Отличительной особенностью данной системной архитектуры является
+то, что на верхних уровнях системной иерархии SDкластеры рассматриваются как SN
+системы (рис. 3). Это выражается в том, что каждому процессорному узлу
+логически назначается отдельный диск. Такой подход позволяет избежать проблем,
+связанных с реализацией глобальной таблицы блокировок и поддержкой когерентности
+кэшей, характерных для SD систем, и одновременно использовать преимущества SD архитектуры
+в плане возможности балансировки загрузки. Подобный подход был также
+использован при разработке параллельной системы баз данных NonStop SQL/MP.</p>
+<p class=MsoNormal><img width=297 height=278 id="Рисунок 1"
+src="{% static 'images/lecture/image003.jpg' %}"
+alt="https://pdbs.susu.ru/CourseManual.files/image040.jpg"></p>
+<p class=MsoNormal>Рисунок 3. Гибридная архитектура CDN</p>
+<p class=MsoNormal>Сравнительный анализ SE, SD и SN архитектур показал, что для
+масштабируемых высокопроизводительных систем баз данных из трех указанных
+архитектур наиболее предпочтительной является SN архитектура.</p>
+<p class=MsoNormal><a name="_Ref16444956"></a><a name="_Ref16532090"></a>Таблица
+2. Сравнение архитектур</p>
+<div align=center>
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse'>
+ <tr>
+  <td valign=top style='border:double windowtext 1.5pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>&nbsp;</p>
+  </td>
+  <td valign=top style='border-top:double windowtext 1.5pt;border-left:none;
+  border-bottom:double windowtext 1.5pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4><span lang=EN-US>SE</span></p>
+  </td>
+  <td valign=top style='border-top:double windowtext 1.5pt;border-left:none;
+  border-bottom:double windowtext 1.5pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4><span lang=EN-US>SD</span></p>
+  </td>
+  <td valign=top style='border-top:double windowtext 1.5pt;border-left:none;
+  border-bottom:double windowtext 1.5pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4><span lang=EN-US>SN</span></p>
+  </td>
+  <td valign=top style='border-top:double windowtext 1.5pt;border-left:none;
+  border-bottom:double windowtext 1.5pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4><span lang=EN-US>CE</span></p>
+  </td>
+  <td valign=top style='border-top:double windowtext 1.5pt;border-left:none;
+  border-bottom:double windowtext 1.5pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4><span lang=EN-US>CD</span></p>
+  </td>
+  <td valign=top style='border:double windowtext 1.5pt;border-left:none;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4><span lang=EN-US>C<sub>D</sub><sup><span style='letter-spacing:
+  1.0pt'>N</span></sup></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border-top:none;border-left:double windowtext 1.5pt;
+  border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>Масштабируемость</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>0</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>1</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>2</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>3</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>3</p>
+  </td>
+  <td valign=top style='border:none;border-right:double windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>3</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border-top:none;border-left:double windowtext 1.5pt;
+  border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>Доступность данных</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>0</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>1</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>3</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>1</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>2</p>
+  </td>
+  <td valign=top style='border:none;border-right:double windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>2</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border-top:none;border-left:double windowtext 1.5pt;
+  border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>Баланс загрузки</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>3</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>2</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>0</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>2</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>1</p>
+  </td>
+  <td valign=top style='border:none;border-right:double windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>1</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border-top:none;border-left:double windowtext 1.5pt;
+  border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>Межпроцессорные коммуникации</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>3</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>0</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>0</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>2</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>1</p>
+  </td>
+  <td valign=top style='border:none;border-right:double windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>1</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border-top:none;border-left:double windowtext 1.5pt;
+  border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>Когерентность кэшей</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>2</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>0</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>3</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>2</p>
+  </td>
+  <td valign=top style='border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>0</p>
+  </td>
+  <td valign=top style='border:none;border-right:double windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>3</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border-top:none;border-left:double windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>Организация блокировок</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>2</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>0</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>3</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>2</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>0</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;
+  border-right:double windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>3</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border-top:none;border-left:double windowtext 1.5pt;
+  border-bottom:double windowtext 1.5pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>Сумма баллов</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:double windowtext 1.5pt;
+  border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>10</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:double windowtext 1.5pt;
+  border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>4</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:double windowtext 1.5pt;
+  border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>11</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:double windowtext 1.5pt;
+  border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>12</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:double windowtext 1.5pt;
+  border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>7</p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:double windowtext 1.5pt;
+  border-right:double windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=a4>13</p>
+  </td>
+ </tr>
+</table>
+</div>
+<p class=MsoNormal>В табл. 2 приведен сравнительный анализ шести различных
+архитектур параллельных систем баз данных по критериям, непосредственно вытекающим
+из требований к параллельной системе баз данных. Для оценки показателей используется
+трехбалльная система: 0 &#8209; «плохо»; 1 - «удовлетворительно», 2 - «хорошо»,
+3 – «превосходно».</p>
+<p class=MsoNormal>Масштабируемость SE архитектуры характеризуется как низкая.
+Это связано с тем, что при количестве процессорных узлов больше 30 общая шина
+доступа к памяти и дискам становится узким местом. SD архитектура демонстрирует
+среднюю масштабируемость, так как общая шина доступа к дискам по-прежнему
+остается узким местом. SN, CD, CE и CDN архитектуры демонстрируют хорошую масштабируемость.</p>
+<p class=MsoNormal>Доступность данных для SN архитектуры можно классифицировать
+как среднюю. Это связано с тем, что страховочные копии в SN системе должны фрагментироваться
+по многим узлам для того, чтобы в случае отказа одного из дисков его
+страховочная копия была доступна в параллельном режиме (в противном случае
+может возникнуть серьезный дисбаланс загрузки). Поддержание когерентности
+фрагментированных страховочных копий потребует определенных накладных расходов,
+связанных прежде всего с пересылкой большого количества данных по
+соединительной сети. SE и CE архитектуры характеризуется &quot;плохой&quot;
+доступностью данных из-за низкой аппаратной отказоустойчивости SE кластера.&nbsp;</p>
+<p class=MsoNormal>SD, CD и CDN архитектуры демонстрируют наилучшую доступность
+данных, так как все проблемы, связанные с обеспечением высокой доступности,
+могут быть эффективно решены на уровне отдельных SD кластеров.</p>
+<p class=MsoNormal>Баланс загрузки для SN архитектуры является серьезной
+проблемой, так как SN системы весьма чувствительны к перекосу данных.
+Иерархические архитектуры типа CE, CD и CDN позволяют достичь лучшей
+сбалансированности загрузки, так как баланс загрузки может здесь выполняться на
+двух уровнях - межкластерном и внутрикластерном. SD кластеры позволяют достичь
+удовлетворительной балансировки загрузки, поскольку каждому процессору доступны
+все диски. Наилучший баланс загрузки обеспечивают SE кластеры, так как помимо
+дисков процессорам доступна вся оперативная память.</p>
+<p class=MsoNormal>Высокая стоимость межпроцессорных коммуникаций является
+одной из слабых сторон SN архитектуры. Использование CE архитектуры позволяет
+значительно сократить накладные расходы, связанные с межпроцессорными
+коммуникациями. Межпроцессорные коммуникации на уровне SE кластера могут быть
+реализованы очень эффективно через разделяемую память. CD и CDN архитектуры
+уступают по этому показателю CE архитектуре, однако могут превзойти SN архитектуру,
+так как потенциально внутрикластерные коммуникации могут быть реализованы более
+эффективно, чем межкластерные.</p>
+<p class=MsoNormal>Когерентность кэшей является серьезной проблемой для CD
+архитектуры, так как в SD кластере одни и те же страницы разделяемых дисков
+буферизуются в индивидуальных модулях памяти. Копии страниц остаются в буферных
+пулах некоторое время после завершения обратившейся к ним транзакции, поэтому изменения,
+сделанные одним узлом SD кластера, могут быть аннулированы изменениями,
+сделанными другим узлом SD кластера. CE архитектура имеет лучшие показатели по
+данному параметру по сравнению с CD архитектурой, так как SEкластеры используют
+общий буферный пул в разделяемой памяти. Однако CE архитектура уступает по
+этому параметру SN архитектуре, так как в SE кластере необходимо поддерживать
+когерентность данных в индивидуальных кэш-памятях процессоров. CDN архитектура
+свободна от указанного недостатка, так как на виртуальном уровне в ней отсутствует
+разделение ресурсов. В SN системах проблема когерентности так же отсутствует,
+так как у них нет разделяемых ресурсов.</p>
+<p class=MsoNormal>Еще одной серьезной проблемой для CD архитектуры являются
+трудности с организацией блокировок объектов базы данных со стороны обращающихся
+к ним транзакций. В SDкластере на каждом процессорном узле необходимо
+поддерживать копию глобальной таблицы блокировок, что может потребовать
+серьезных накладных расходов. SE архитектура в значительной мере избавлена от
+этой проблемы, так как глобальная таблица блокировок SE кластера хранится в
+единственном экземпляре в разделяемой оперативной памяти. В SN системах нет
+необходимости в поддержании глобальной таблицы блокировок по причине отсутствия
+разделения ресурсов, поэтому SN архитектура занимает наилучшую позицию по
+данному параметру. CDN архитектура в полной мере наследует это качество от SN архитектуры.</p>
+<p class=MsoNormal>Исходя из проведенного анализа, мы можем сделать вывод, что
+нет весомых причин для поддержки CD архитектуры в чистом виде. CE архитектура
+выглядит более привлекательно, чем SE архитектура. Однако, если принимать во
+внимание требования к параллельной системе баз данных, наилучшим выбором
+является CDN архитектура.</p>
+<div align="center">
+	<a style="align:center" href="javascript:history.back();">Назад</a>	
+	<a>|</a>
+	<a style="align:center" href="javascript:scroll(0,0)">Наверх</a>	
+</div>				
+<h1><a name="lecture3">Лекция 3. Требования к параллельным базам данных. Основные формы параллельной обработки запросов в параллельных системах данных.</a></h1>
+<h2><span lang=KZ style='color:black'>3.1 </span><span lang=KZ>Требования к
+параллельным базам данных.</span></h2>
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+<p class=MsoNormal>Параллельная система баз данных должна представлять собой
+аппаратно-программный комплекс, способный хранить большой объем данных и
+обеспечивать эффективную обработку большого количества параллельных транзакций
+в режиме &quot;24 часа в сутки, 7 дней в неделю&quot;. Другими словами,
+параллельная система баз данных должна представлять собой <i>систему высокой
+готовности</i>, то есть СУБД должна быть готова в любой момент обеспечить
+оперативную обработку запроса пользователя. В соответствие с вышесказанным
+можно сформулировать следующие <i>основные требования</i> к параллельной
+системе баз данных:</p>
+<p class=MsoListParagraphCxSpFirst style='margin-left:71.45pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>высокая масштабируемость;</p>
+<p class=MsoListParagraphCxSpMiddle style='margin-left:71.45pt;text-indent:
+-18.0pt'><span style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>высокая производительность;</p>
+<p class=MsoListParagraphCxSpLast style='margin-left:71.45pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>высокая доступность данных.</p>
+<p class=MsoNormal><a name="_Toc69577391">Масштабируемость</a></p>
+<p class=MsoNormal>Важным свойством параллельных платформ является возможность
+их динамического наращивания в целях адаптации к увеличивающемуся размеру базы
+данных или возрастающим требованиям производительности. Это достигается путем
+постепенного добавления в конфигурацию системы дополнительных процессоров,
+модулей памяти дисков и других аппаратных компонент. Данный процесс называется <i>масштабированием</i>
+системы. При удвоении аппаратной мощности системы мы можем ожидать, что ее
+производительность также возрастет вдвое, однако на практике реальное
+приращение производительности часто оказывается существенно ниже. Например,
+масштабируемость <i>SMP</i> систем ограничена 20-30 процессорами. При
+дальнейшем наращивании <i>SMP</i> системы производительность возрастает очень
+слабо или даже начинает происходить ее падение. Это связано с тем, что
+процессоры начинают все более простаивать в ожидании доступа к разделяемым
+ресурсам (общая шина доступа к памяти и дискам). В соответствие с этим масштабируемость
+любой многопроцессорной системы определяется <i>эффективностью
+распараллеливания</i>.</p>
+<p class=MsoNormal>Существуют две основные качественные характеристики эффективности
+распараллеливания: <i>ускорение</i> и <i>расширяемость</i>. Дадим следующее
+формализованное определение указанных понятий, следуя работе.</p>
+<p class=MsoNormal><a name="_Toc69577392">Ускорение</a></p>
+<p class=MsoNormal>Пусть даны две различные конфигурации <i>A</i> и <i>B </i>параллельной
+машины баз данных c заданной архитектурой, различающиеся количеством
+процессоров и ассоциированных с ними устройств (предполагаем, что все
+конфигурации предполагают пропорциональное наращивание модулей памяти и дисков).
+Пусть задан некоторый тест <i>Q</i>. <i>Коэффициент ускорения</i> <i>a<sub>AB</sub></i>,
+получаемый при переходе от конфигурации <i>A</i> к конфигурации <i>B</i>,
+определяется следующей формулой</p>
+<p class=MsoNormal><img width=84 height=50 id="Рисунок 5"
+src="{% static 'images/lecture/image004.gif' %}"
+alt="https://pdbs.susu.ru/CourseManual.files/image032.gif"></p>
+<p class=MsoNormal>Здесь <i>d<sub>A</sub></i> - <i>степень параллелизма </i>(количество
+процессоров) конфигурации <i>A</i>; <i>d<sub>B</sub></i> - степень параллелизма
+конфигурации <i>B</i>; <i>t<sub>QA</sub></i> - время, затраченное конфигурацией
+<i>A</i> на выполнение теста <i>Q</i>; <i>t<sub>QB</sub></i> - время,
+затраченное конфигурацией <i>B</i> на выполнение теста <i>Q</i>.</p>
+<p class=MsoNormal>Говорят, что система демонстрирует <i>линейное ускорение</i>,
+если коэффициент ускорения остается равным единице для всех конфигураций данной
+системы.</p>
+<p class=MsoNormal><a name="_Toc69577393">Расширяемость</a></p>
+<p class=MsoNormal>Пусть теперь задан набор тестов <i>Q</i><sub>1</sub>, <i>Q</i><sub>2</sub>,
+..., количественно превосходящих некоторый фиксированный тест <i>Q</i> в <i>i</i>
+раз, где <i>i</i> - номер соответствующего теста. Пусть заданы конфигурации
+параллельных машин баз данных <i>A</i><sub>1</sub>, <i>A</i><sub>2</sub>, ...,
+превосходящие по степени параллелизма некоторую минимальную конфигурацию <i>A</i>
+в <i>j</i> раз, где <i>j </i>- номер соответствующей конфигурации. Тогда <i>коэффициент
+расширяемости</i> <i>e<sub>km</sub></i>, получаемый при переходе от
+конфигурации <i>A<sub>k</sub></i> к конфигурации <i>A<sub>m</sub></i> (<i>k</i>
+&lt; <i>m</i>), задается формулой</p>
+<p class=MsoNormal><img width=76 height=50 id="Рисунок 4"
+src="{% static 'images/lecture/image005.gif' %}"
+alt="https://pdbs.susu.ru/CourseManual.files/image034.gif"></p>
+<p class=MsoNormal>Говорят, что система демонстрирует <i>линейную расширяемость</i>,
+если коэффициент расширяемости остается равным единице для всех конфигураций
+данной системы.</p>
+<p class=MsoNormal>Говорят, что параллельная система <i>хорошо масштабируема</i>,
+если она демонстрирует ускорение и расширяемость, близкие к линейным.</p>
+<p class=MsoNormal>Ускорение позволяет определить эффективность наращивания
+системы на сопоставимых задачах. Расширяемость позволяет измерить эффективность
+наращивания системы на б&oacute;льшихзадачах.</p>
+<p class=MsoNormal>Основным фактором, препятствующим хорошей масштабируемости
+системы, являются помехи, возникающие при конкурентном доступе процессоров к
+разделяемым ресурсам.</p>
+<p class=MsoNormal><a name="_Toc69577394">&nbsp;</a></p>
+<h2><span lang=KZ>3.</span>2 <span lang=KZ>Основные формы параллельной
+обработки запросов в параллельных системах данных.</span></h2>
+<p class=MsoNormal>Производительность</p>
+<p class=MsoNormal>Производительность параллельной системы баз данных
+определяющим образом зависит от эффективного решения следующих ключевых
+проблем:</p>
+<p class=MsoListParagraphCxSpFirst style='margin-left:71.45pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>межпроцессорные коммуникации;</p>
+<p class=MsoListParagraphCxSpMiddle style='margin-left:71.45pt;text-indent:
+-18.0pt'><span style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>когерентность КЭШей;</p>
+<p class=MsoListParagraphCxSpMiddle style='margin-left:71.45pt;text-indent:
+-18.0pt'><span style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>организация блокировок;</p>
+<p class=MsoListParagraphCxSpLast style='margin-left:71.45pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>балансировка загрузки.</p>
+<p class=MsoNormal>Межпроцессорные коммуникации<b><i>&nbsp;</i></b>в
+параллельных системах баз данных обычно порождают трафик значительного объема,
+что может выражаться в высоких накладных расходах, связанных с передачей
+сообщений от одного процессора - другому.</p>
+<p class=MsoNormal>Когерентность КЭШей. Учитывая, что обращение к диску
+примерно в 10<sup><span style='letter-spacing:1.0pt'>5</span></sup>&#8209;10<sup><span
+style='letter-spacing:1.0pt'>6</span></sup> раз медленнее, чем обращение к
+оперативной памяти, мы можем существенным образом повысить общую
+производительность системы баз данных, используя кэширование страниц диска в
+оперативной памяти. При этом, если один и тот же фрагмент базы данных кэширован
+в приватной памяти различных процессоров, то мы должны <i>согласовывать</i> изменения
+данного фрагмента в кэшах различных процессоров, то есть обеспечивать <i>когерентность
+кэшей</i>. Поддержание когерентности кэшей в многопроцессорной системе может
+быть связано с серьезными накладными расходами.</p>
+<p class=MsoNormal>Организация блокировок.<i> </i>Если различные процессоры
+обрабатывают одни и те же объекты базы данных (отношения, кортежи и др.), нам
+необходимо поддерживать <i>глобальную таблицу блокировок</i>, используемую
+всеми процессорами. Это может выражаться в больших накладных расходах.</p>
+<p class=MsoNormal>Балансировка загрузки процессоров является одной из ключевых
+проблем для обеспечения высокой эффективности параллельной обработки запросов.
+СУБД должна разбивать запрос на параллельные агенты и распределять их по
+процессорам таким образом, чтобы обеспечивалась равномерная загрузка всех
+задействованных процессоров. Особенно остро вопрос с балансировкой загрузки
+возникает при использовании фрагментного параллелизма. Фактором, который может
+существенным образом снизить эффективность распараллеливания реляционных
+операций, особенно соединения и сортировки, является величина <i>перекоса</i>,
+присутствующая в данных, подлежащих обработке. Исследования показали, что в
+реальных базах данных некоторые значения для определенного атрибута встречаются
+значительно чаще, чем остальные. В частности, Линч (Lynch) отмечает, что для
+текстовых атрибутов характерно распределение значений по закону Зипфа. Подобная
+неоднородность называется <i>перекосом значений атрибута</i>. Лакшми(Lakshmi) и
+Ю (Yu) показали, что при наличии перекоса данных ускорение, достигаемое при
+параллельным выполнении операций соединения, может быть ограничено
+катастрофическим образом по причине перегрузки одних процессоров и недогрузки
+других.</p>
+<p class=MsoNormal><a name="_Toc69577395">Доступность данных</a></p>
+<p class=MsoNormal>Одной из критических характеристик параллельных систем баз
+данных является способность системы обеспечить высокую степень доступности
+данных в условиях отказа некоторых аппаратных компонент. Вероятность отказа
+аппаратуры в однопроцессорной системе не велика. Однако в с системе с тысячами
+процессорных узлов данная вероятность возрастает в тысячи раз. Поэтому проблема
+обеспечения высокой доступности данных в многопроцессорных системах имеет важное
+значение.</p>
+<p class=MsoNormal><i>Коэффициент доступности базы данных</i> нестрого может
+быть определен как отношение межу промежутком времени, в течение которого база
+данных была действительно доступна пользователям, и промежутком времени, в
+течение которого пользователи требовали доступ к базе данных. Например, если
+пользователи требовали доступ к базе данных в течение 8 часов в день, а реально
+база данных была доступна только в течение 6 часов, то коэффициент доступности
+составляет 6/8 = 0.75 в течение 8-часового периода. Систему баз данных с <i>высокой
+доступностью данных</i> можно определить как систему, обеспечивающую прием
+запросов пользователей 24 часа в сутки с коэффициентом доступности не менее 0.9.</p>
+<p class=MsoNormal><i>Высокая доступность данных</i> определяется следующими
+четырьмя факторами:</p>
+<p class=MsoListParagraphCxSpFirst style='margin-left:71.45pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>аппаратная отказоустойчивость;</p>
+<p class=MsoListParagraphCxSpMiddle style='margin-left:71.45pt;text-indent:
+-18.0pt'><span style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>восстановление целостности базы данных после сбоя;</p>
+<p class=MsoListParagraphCxSpMiddle style='margin-left:71.45pt;text-indent:
+-18.0pt'><span style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>оперативное восстановление базы данных;</p>
+<p class=MsoListParagraphCxSpLast style='margin-left:71.45pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>прозрачность для пользователя процессов восстановления системы.</p>
+<p class=MsoNormal><i>Аппаратная отказоустойчивость</i> является основным
+фактором обеспечения высокой доступности данных в параллельных системах баз
+данных с большим количеством процессорных узлов. Под аппаратной
+отказоустойчивостью понимают сохранение общей работоспособности системы при
+одиночном отказе таких аппаратных компонент, как процессор, модуль памяти,
+диск, и каналов доступа к перечисленным компонентам. В частности, одиночный
+отказ любого устройства не должен привести к потере целостности базы данных и
+тем более к физической утрате какой-то части базы данных.</p>
+<p class=MsoNormal><i>Восстановление целостности базы данных после сбоя</i>
+предполагает поддержку ACID транзакций и журнализацию изменений. Данные
+возможности поддерживаются большинством современных СУБД с архитектурой
+клиент-сервер.</p>
+<p class=MsoNormal><i>Оперативное восстановление базы данных</i> предполагает
+восстановление нормальной работоспособности системы с сохранением режима обслуживания
+пользователей. При этом коэффициент доступности данных может временно
+уменьшаться.</p>
+<p class=MsoNormal><i>Прозрачность для пользователя процессов восстановления
+системы</i> предполагает незначительное уменьшение коэффициента доступности
+базы данных во время сбоя и последующего восстановления. Сложность данной
+проблемы заключается в том, что выход из строя одного из дисков может привести
+к серьезному дисбалансу загрузки процессоров, например, в силу удвоения
+нагрузки на узел, содержащий копию утраченных данных. Возможное решение
+указанной проблемы заключается в том, чтобы фрагментировать копию диска по
+другим дискам таким образом, чтобы она допускала параллельный доступ.</p>
+<div align="center">
+	<a style="align:center" href="javascript:history.back();">Назад</a>	
+	<a>|</a>
+	<a style="align:center" href="javascript:scroll(0,0)">Наверх</a>	
+</div>				
+<h1><a name="lecture4">Лекция 4. Выполнение параллельных запросов в базах данных. Применение
+облачных и квантовых технологий при создании последовательных и параллельных
+запросов.</a></h1>
+<h2><span lang=KZ>4.1 Выполнение параллельных запросов в базах данных. </span></h2>
+<p class=MsoNormal>Обработка запросов - это процесс, посредством которого
+система управления базами данных (СУБД) анализирует, проверяет и оптимизирует
+заданный запрос перед созданием низкоуровневого кода, понятного БД.</p>
+<p class=MsoNormal>Обработка запросов в <a
+href="https://www.ibm.com/docs/en/zos-basic-skills?topic=zos-what-is-database-management-system"
+target="_blank"><span style='color:windowtext;text-decoration:none'>СУБД</span></a>,
+как и в любом другом языке высокого уровня (ЯВУ), где код сначала генерируется,
+а затем выполняется для выполнения различных операций, имеет две фазы: время
+компиляции и время выполнения.</p>
+<p class=MsoNormal>Использование декларативных языков и оптимизация запросов
+является одним из основных факторов, способствующих успеху технологии <a
+href="https://en.wikipedia.org/wiki/Relational_database" target="_blank"><span
+style='color:windowtext;text-decoration:none'>СУБД</span></a>. Любая база
+данных позволяет пользователям создавать запросы для запроса определенных
+данных, а затем база данных использует эффективные методы для поиска
+запрошенных данных.</p>
+<p class=MsoNormal>Задача оптимизатора запросов - оценить все возможные способы
+выполнения запроса и выбрать наиболее эффективный. Это делается в процессе
+оптимизации.</p>
+<p class=MsoNormal>Разработка передовых систем баз данных совпала с заметными
+достижениями в области обработки данных и технологий распределенных вычислений.
+Параллельные системы баз данных появились в результате добавления следующих
+двух функций.</p>
+<p class=MsoNormal>Методы управления данными и параллельной обработки
+объединены в параллельных системах баз данных, чтобы обеспечить
+масштабируемость, высокую производительность и высокую доступность для
+приложений, интенсивно использующих данные.</p>
+<p class=MsoNormal>Параллельная обработка запросов в системах <a
+href="https://medium.com/better-programming/7-database-concepts-you-should-know-about-a6825f46e449"
+target="_blank"><span style='color:windowtext;text-decoration:none'>баз данных</span></a>
+была предметом многочисленных исследований за последние два десятилетия. Его
+вывод, несомненно, в настоящее время используется в качестве компонента важных
+коммерческих СУБД. Архитектуры без общего доступа (SN) были в центре внимания
+большинства исследований, таких как исследовательские прототипы Gamma и Bubba.</p>
+<p class=MsoNormal>Он отлично подходит для текущих распределенных и кластерных
+вычислений и служит координационным центром для различных стратегий
+симметричных многопроцессорных архитектур (SMP), таких как XPRS и Volcano.</p>
+<p class=MsoNormal>Подход к оптимизации базы данных, основанный на CMP,
+изучался многими другими учеными. Но большая часть их усилий была направлена
+&#8203;&#8203;на оптимизацию операций соединения с учетом L2-кэша и
+параллельных буферов общей основной памяти.</p>
+<p class=MsoNormal>Разделяя вопрос на части, которые могут выполняться
+параллельно, параллелизм в запросе позволяет параллельно выполнять
+многочисленные запросы. Архитектура без общего доступа может помочь в этом.</p>
+<p class=MsoNormal>С появлением все большего количества ресурсов, таких как
+процессоры и диски, параллелизм также используется для ускорения процесса
+выполнения запросов.</p>
+<p class=MsoNormal>Подсчитаем количество строк в таблице SQL Server. Если
+таблица небольшая, SQL Server, скорее всего, будет использовать план выполнения,
+как показано на рисунке 4.</p>
+<p class=MsoNormal><img border=0 width=324 height=72 id="Рисунок 17"
+src="{% static 'images/lecture/image006.jpg' %}"
+alt="https://infostart.ru/upload/iblock/d87/1250-Fig1.jpg"></p>
+<p class=MsoNormal>Рисунок 4. Последовательный план подсчета (<span
+style='background:white'>Serial Counting Plan</span>)</p>
+<p class=MsoNormal>Сам план очень прост: оператор “Stream Aggregate”
+подсчитывает строки, которые он получает от оператора “Index Scan” и возвращает
+результат как только все строки были обработаны. </p>
+<p class=MsoNormal>С другой стороны, если таблица является достаточно большой,
+оптимизатор SQL Server может выбрать дополнительных работников, используя план
+запроса, как показано на рисунке 5.</p>
+<p class=MsoNormal><img border=0 width=486 height=76 id="Рисунок 16"
+src="{% static 'images/lecture/image007.jpg' %}"
+alt="https://infostart.ru/upload/iblock/e48/1250-Fig2.jpg"></p>
+<p class=MsoNormal>Рисунок 5. Параллельный план подсчета (<span
+style='background:white'>Parallel Counting Plan)</span></p>
+<p class=MsoNormal>Маленькие желтые значки со стрелками показывают операции,
+которые включают несколько работников. Каждому работнику назначается отдельная
+часть работы, и частичные результаты затем объединяют с получением конечного
+результата. Как показано в примере ручного подсчета, параллельный план может
+завершиться значительно быстрее, чем последовательный план, потому что
+несколько работников будут активно подсчитывать строки одновременно.</p>
+<h2><span lang=KZ>Как параллелизм работает</span></h2>
+<p class=MsoNormal>Представим, что SQL Server не имеет встроенную поддержку
+параллелизма. Можно попытаться повысить производительность оригинального
+запроса подсчета строк, вручную разбив запрос на одинаковые по размеру кусочки
+и запустив каждый из них одновременно на отдельном подключении к серверу.&nbsp;</p>
+<p class=MsoNormal><img border=0 width=370 height=309 id="Рисунок 15"
+src="{% static 'images/lecture/image008.jpg' %}"
+alt="https://infostart.ru/upload/iblock/ac6/1250-Fig3.jpg"></p>
+<p class=MsoNormal>Рисунок 6. Ручной параллелизм (Manual Parallelism)</p>
+<p class=MsoNormal>Каждый запрос на рисунке 6 написан для обработки отдельного
+диапазона строк таблицы, гарантируя, что каждая строка из таблицы
+обрабатывается только один раз в целом. Если SQL Server запустит каждый запрос
+на отдельном блоке обработки, можно рассчитывать на получение трех частичных
+результатов примерно в треть времени. Естественно, все равно потребуется
+выполнить дополнительную стадию объединения результатов, чтобы получить
+правильный конечный результат.</p>
+<h3>Параллельное выполнение как множество последовательных планов</h3>
+<p class=MsoNormal>Пример «Ручного параллелизма» не столь далек от того, как
+SQL Server фактически осуществляет свою параллельную работу с запросами. Предположим,
+что SQL Server выделяет три дополнительных работника на запрос во время его
+выполнения. Концептуально, можно перерисовать параллельный план, чтобы
+показать, что SQL Server запускает три последовательных плана одновременно .&nbsp;</p>
+<p class=MsoNormal><img border=0 width=288 height=173 id="Рисунок 14"
+src="{% static 'images/lecture/image009.jpg' %}"
+alt="https://infostart.ru/upload/iblock/631/1250-Fig4.jpg"></p>
+<p class=MsoNormal>Рисунок 7. Множество последовательных планов (Multiple
+Serial Plans)&nbsp;</p>
+<p class=MsoNormal>Каждому дополнительному работнику присваивается один из трех
+ветвей плана, которые сливаются&nbsp; в оператор Сбора Потоков (Gather Streams
+operator). Только оператор Сбора Потоков (Gather Streams operator) содержит
+маленькую желтую иконку параллелизма; это сейчас единственный оператор, который
+взаимодействует с несколькими работниками. Эта общая стратегия подходит SQL
+Server по двум основным причинам. Во-первых, весь код, который SQL Server
+необходимо выполнить для реализации последовательных планов уже существует и
+был оптимизирован в течение многих лет и релизации продукта. Во-вторых, этот
+метод очень хорошо масштабируется: если больше работников доступно во время
+выполнения, SQL Server может легко добавить дополнительные ветви плана чтобы
+распределить работу на большее количество работников.</p>
+<p class=MsoNormal>Количество дополнительных работников, которых SQL Server
+присваивает каждой области параллельного плана во время выполнения известно как
+степень параллелизма (Degree of parallelism - часто сокращенно DOP). SQL-сервер
+выбирает DOP непосредственно перед началом выполнение запроса, и это значение
+может меняться между выполнениями запроса без необходимости повторной
+компиляции плана. Максимальная DOP для каждой параллельной области определяется
+количеством логических блоков обработки (logical processing units) видимых SQL
+Server.</p>
+<h3>Параллельное сканирование (Parallel Scan) и поставщик параллельных страниц
+(Parallel Page Supplier)</h3>
+<p class=MsoNormal>Проблемой в концептуальном плане, показанном на рисунке 7,
+является то, что каждый оператор Index Scan будет считать каждую строку во всей
+совокупности ввода. Левая часть некорректна, план будет выдавать неправильные
+результаты и займет больше времени для выполнения, чем последовательная версия.
+Ручной пример параллелизма избежал этой проблемы, используя явное «ГДЕ»
+(“WHERE”) в каждом запросе и разделил входные строки на три одинаковых по
+размеру диапазона.</p>
+<p class=MsoNormal>SQL Server не использует тот же подход, потому что,
+распределяя работу равномерно, можно предположить, что каждый запрос будет
+получать равную долю доступных вычислительных ресурсов, и что каждая строка
+данных потребует одинаковое усилие для обработки. В качестве простого примера,
+такого как подсчет строк в таблице (на сервере без другой деятельности) эти
+предположения вполне могут иметь место и три запроса могут действительно
+вернуть свои частичные результаты примерно за то же время.</p>
+<p class=MsoNormal>В целом, однако, можно легко привести примеры, где эти
+предположения не будут допускаться в реальном мире, в связи с некоторым числом
+внешних или внутренних факторов. Например, один из запросов может быть запланирован
+на тот же логический процессор, который занят продолжительной&nbsp; массовой
+загрузкой, в то время как другие остаются без нагрузки. В качестве альтернативы
+рассмотрим запрос, который включает в себя операцию соединения (Join), где
+объем работ, необходимых для обработки конкретной строки сильно зависит от
+того, соответствует ли она условию соединения или нет. Если некоторые запросы
+содержат больше соединяющих строк, чем другие, то время выполнения может
+варьироваться в широких пределах и общая производительность будет ограничена
+скоростью самого медленного работника.</p>
+<p class=MsoNormal>Вместо того чтобы выделять фиксированное количество строк
+для каждого работника, SQL Server использует функцию хранения под названием
+поставщик параллельных страниц (Parallel Page Supplier) для распределения строк
+среди работников по требованию. Вы не увидите Parallel Page Supplierв
+графическом плане запроса, потому что он не является частью процессора
+запросов, но мы можем продлить иллюстрацию рисунка 8, чтобы показать, где он
+будет находиться и его связи:</p>
+<p class=MsoNormal><img border=0 width=442 height=181 id="Рисунок 13"
+src="{% static 'images/lecture/image010.jpg' %}"
+alt="https://infostart.ru/upload/iblock/3e6/1250-Fig5.jpg"></p>
+<p class=MsoNormal>Рисунок 8. Поставщик параллельных страниц (Parallel Page
+Supplier)&nbsp;</p>
+<p class=MsoNormal>Важным моментом является то, что это схема на основе спроса;
+Parallel Page Supplier отвечает на запросы работников, обеспечивая партию строк
+любому работнику, который должен еще поработать. Возвращаясь к аналогии
+подсчета, Parallel Page Supplier представлен совком, используемым для
+извлечения данных. Один общий совок гарантирует, что нет двух людей,
+подсчитывающих те же данные, с другой стороны, нет ничего, что может препятствовать
+человеку забирать больше данных для подсчета по мере необходимости. В
+частности, если один человек работает медленнее, чем другие, то этот человек
+просто реже пользуется совком, и другие работники будут подсчитывать больше данных,
+чтобы компенсировать это.</p>
+<p class=MsoNormal>В SQL Server медленный работник делает меньше запросов к
+Parallel Page Supplier и таким образом обрабатывает меньше строк. Это не влияет
+на работу других работников, и они продолжают обработку строк в их максимальной
+производительности. Таким образом, схема на основе спроса обеспечивает
+определенную степень устойчивости к изменениям в рабочей пропускной
+способности. Вместо того чтобы быть связанным по скорости самого медленного
+работника, производительность схемы на основе спроса уменьшается незначительно,
+если у отдельного работника снижается производительность. Тем не менее, тот
+факт, что каждый работник может обрабатывать значительно отличающиеся
+количества строк, в зависимости от условий среды выполнения, может вызвать
+другие проблемы.</p>
+<p class=MsoNormal>Использование Parallel Page Supplier не мешает SQL Server
+использовать существующие оптимизации, такие как сканирование опережающего
+чтения (read-ahead scanning) (предварительную выборку данных из постоянного
+хранения). На самом деле, это может быть даже немного более эффективным
+&nbsp;для трех работников потребляющих строки из одного, базового физического
+сканирования, а не из трех отдельных сканов областей, которые мы видели в
+ручном примере параллелизма.</p>
+<p class=MsoNormal>Parallel Page Supplier также не ограничивается
+использованием сканирования индексов; SQL Server использует Parallel Page
+Supplier всякий раз, когда несколько работников совместно читают структуру
+данных. Эта структура данных может быть массив, кластерная таблица или индекс,
+и операция может быть либо сканирования (scan) либо поиска (seek). Если
+последний пункт удивляет вас, считают, что Index Seek лишь частичное
+сканирование (scan) т.е. она стремится найти первую отобранную (<span
+style='background:white'>qualifying)</span>&nbsp;строку, а затем сканирует до
+конца отобранного диапазона.</p>
+<h3>Контексты исполнения (Execution Contexts)</h3>
+<p class=MsoNormal>Обратимся теперь к отдельным серверным соединениям,
+используемым в ручном примере параллелизма для достижения одновременного
+выполнения. Это не было бы эффективным для SQL Server,&nbsp;фактически создать
+несколько новых соединений для выполнения каждого параллельного запроса, но
+реальный механизм во многом похож. Вместо того, чтобы создавать отдельное
+соединение для каждого последовательного запроса, SQL Server использует
+облегченную конструкцию, известную как контексты исполнения (Execution
+Contexts).</p>
+<p class=MsoNormal>Контекст выполнения происходит от части плана запроса, во
+время выполнения, заполняя детали, которые не были известны в то время, когда
+план был скомпилирован и оптимизирован. Эти детали включают ссылки на объекты,
+которые не существуют до момента выполнения (временная таблица, созданная в
+рамках одного пакета, например) и значения любых параметров и локальных
+переменных. Более подробная информация о контекстах - <a
+href="https://infostart.ru/redirect.php?url=aHR0cDovL3RlY2huZXQubWljcm9zb2Z0LmNvbS9lbi11cy9saWJyYXJ5L2VlMzQzOTg2KFNRTC4xMDApLmFzcHg="
+target="_blank"><span style='color:windowtext'>Microsoft White Page</span></a>.</p>
+<p class=MsoNormal>SQL Server запускает параллельный план, выводя контексты
+выполнения DOP для каждой параллельной области плана запроса, с использованием
+отдельного работника для запуска части последовательного плана содержащегося в
+каждом контексте. Для облегчения понимания концепции, на рисунке 9 показаны
+четыре контекста выполнения &nbsp;созданных для параллельного плана подсчета,
+над которым мы работали до сих пор. Каждый цвет определяет область контекста
+исполнения, и хотя это не показано явно, Parallel Page Supplier снова
+используется для координации индексов.&nbsp;</p>
+<p class=MsoNormal><img border=0 width=408 height=138 id="Рисунок 12"
+src="{% static 'images/lecture/image011.jpg' %}"
+alt="https://infostart.ru/upload/iblock/3e0/1250-Fig6.jpg"></p>
+<p class=MsoNormal>Рисунок 9. Контексты выполнения параллельного плана</p>
+<p class=MsoNormal>Самый левый контекст выполнения плана параллельного запроса
+(отображается красным цветом, на рисунке 9) играет особую координирующую роль и
+выполняется работником подключения, отправившего запрос. Это &quot;первый&quot;
+контекст выполнения известен как нулевой контекст выполнения, и связанный работник
+известен как нулевой поток (thread zero). Мы определим некоторые из этих
+терминов более точно в следующем разделе, а пока предположим, что «работник» и
+«поток» (thread) означает примерно то же самое.</p>
+<p class=MsoNormal>Чтобы получить более конкретное представление абстрактных
+понятий, рисунок 10 показывает информацию, полученную путем запуска
+параллельного запроса подсчета строк, с помощью опции SQL Server Management
+Studio (SSMS), «I<span style='background:white'>nclude Actual Execution Plan</span>».</p>
+<p class=MsoNormal><img border=0 width=464 height=249 id="Рисунок 11"
+src="{% static 'images/lecture/image012.jpg' %}"
+alt="https://infostart.ru/upload/iblock/6fc/1250-Fig7.jpg"></p>
+<p class=MsoNormal>Рисунок 10. Параллельный план подсчета строк</p>
+<p class=MsoNormal>Выноски показывают количество строк, обработанных каждым
+работником (потоком) в двух различных точках в плане. Информация поступила из
+окна SSMS Properties, которое может быть доступно при нажатии на оператора (или
+соединительной линии) и клавиши F4. Кроме того, вы можете щелкнуть правой
+кнопкой мыши на операторе или линии и выбрать «Свойства» («Properties») из
+всплывающего меню.</p>
+<p class=MsoNormal>Читая справа, видно сколько строк рассчитывает каждый из
+трех работников в параллельной части плана; два работника обрабатывают приблизительно
+равное количество строк (около 40 000), а третий получает всего 32 000 строк из
+Parallel Page Supplier. Как уже говорилось ранее, процесс основанный на спросе
+означает, что точное число строк, обработанных каждым работником зависит от
+временных показателей и загрузки процессоров (в числе прочего) и часто
+колеблется между выполнениями запросов, даже на легкозагруженой машине.</p>
+<p class=MsoNormal>Левая часть диаграммы показывает три частичных результата
+(по одному от каждого параллельного работника, выполняется в своем собственном
+контексте исполнения), которые собираются вместе и подвел их к одному
+результату 'thread zero'. </p>
+<h2><span lang=KZ>Планировщики, работники и задачи (Schedulers, Workers, and
+Tasks)</span></h2>
+<h3>Планировщики (Schedulers)</h3>
+<p class=MsoNormal>Планировщик в SQL Server представляет собой логический
+процессор, который может быть физическим процессором, ядром процессора, или,
+возможно, одним из нескольких аппаратных потоков, работающих в пределах ядра
+(Hyper Threading). Основная цель планировщиков заключается в том, чтобы
+позволить SQL Server точно управлять собственным планированием потоков, а не
+полагаться на общие алгоритмы, используемых в операционных системах Windows. Каждый
+планировщик гарантирует, что только один совместно выполняющийся поток является
+работоспособным (насколько позволяет операционная система) в любой момент,
+который может иметь важные преимущества, такие как снижение переключения
+контекста, и снижение числа вызовов в ядре Windows. Часть третья этой серии
+охватывает внутреннее планирование задач и их исполнение более подробно.</p>
+<p class=MsoNormal>Информация о планировщиках показана в просмотре системы
+динамического управления (DMV), sys.dm_os_schedulers.</p>
+<h3>Работники и Потоки<span lang=EN-US> (Workers and Threads)</span></h3>
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+<p class=MsoNormal>Работник SQL Server является абстракцией, что представляет
+собой либо один поток операционной системы или набор потоков (fiber) (в
+зависимости от настройки конфигурации “lightweight pooling”). Очень немногие
+системы работают с включенным режимом “fiber-mode scheduling”, таким образом
+многие тексты (в том числе большая часть официальной документации) ссылаются на
+&quot;рабочие потоки&quot; (worker threads) - подчеркивая тот факт, что, для
+большинства практических целей, работник является потоком. Работник (поток)
+привязан к конкретному планировщику для всего срока службы. Информация о
+работниках показана в sys.dm_os_workersDMV.</p>
+<h3>Задачи (Tasks)</h3>
+<p><span style='font-size:14.0pt'>Задача представляет собой единицу работы,
+которая планируется на SQL Server. Работа может быть связана с одной или
+несколькими задачами. Например, параллельный запрос будет выполнять несколько
+задач</span>.</p>
+<h3>Контексты исполнения (Execution Contexts)</h3>
+<p><span style='font-size:14.0pt'>Если задача описывает работу, которую
+предстоит сделать, то контекст выполнения описывает где эта работа будет
+происходить. Каждая задача выполняется внутри одного контекста исполнения,
+которые были определены в колонке exec_context_id в sys.dm_os_tasksDMV(вы также
+можете увидеть контексты выполнения с помощью “ECID” колонки в просмотре
+обратной совместимости</span> sys.sysprocesses).</p>
+<h3>Оператор обмена (The Exchange Operator)</h3>
+<p class=MsoNormal>Чтобы кратко резюмировать, мы видели, что SQL Server
+выполняет параллельный план путем совместного запуска нескольких экземпляров
+последовательного плана. Каждый последовательный план является одной задачей,
+выполняемой в отдельном рабочем потоке внутри собственного контекста
+выполнения. Последний ингредиент в параллельном плане оператор обмена, который
+является 'клеем' для SQL Serverи используется для соединения контекстов
+исполнения параллельного плана. В целом, комплексный план запроса может содержать
+любое количество последовательных или параллельных областей, соединенных
+операторами обмена.</p>
+<p class=MsoNormal>До сих пор мы видели только один вариант оператора обмена, а
+именно «Gather streams», но оператор обмена может появиться в графических
+планов в других вариантах:&nbsp;</p>
+<p class=MsoNormal><img border=0 width=381 height=71 id="Рисунок 10"
+src="{% static 'images/lecture/image013.jpg' %}"
+alt="https://infostart.ru/upload/iblock/4a2/1250-Fig8.jpg"></p>
+<p class=MsoNormal>Рисунок 11. Логические операторы обмена</p>
+<p class=MsoNormal>Все виды операторов обмена служат для перемещения строк
+между одним или несколькими работниками, распределяя отдельные строки среди
+них. Различные виды логических операторов используются SQL Server, чтобы ввести
+новую последовательную или параллельную область или перераспределить строки на
+границе раздела между двумя параллельными областями.</p>
+<p class=MsoNormal>Один физический оператор обмена более гибкий, чем его три
+логических варианта. Он может не только разделить, объединить, или
+перераспределить строки среди рабочих, подключенных к нему, но также:</p>
+<p class=MsoNormal>использовать одну из пяти различных стратегий, чтобы
+определить какие исходящие данные направить на ввод строки</p>
+<p class=MsoNormal>при необходимости сохранять порядок сортировки входных строк</p>
+<p class=MsoNormal>Большая часть этой гибкости проистекает из его внутренней
+конструкции, поэтому мы рассмотрим это в первую очередь.</p>
+<h3><span style='font-size:14.0pt'>Внутри обмена</span></h3>
+<p class=MsoNormal>Оператор обмена имеет две различных субкомпоненты:</p>
+<p class=MsoListParagraphCxSpFirst style='margin-left:71.45pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Производителей (Producers), которые соединяются с рабочими на его
+входе</p>
+<p class=MsoListParagraphCxSpLast style='margin-left:71.45pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Потребители (Consumers), которые соединяются с работниками на его
+выходе</p>
+<p class=MsoNormal>На рисунке 12 показано увеличенное изображение
+(разноцветное) “Gather Streams” оператора с рисунка 9.&nbsp;</p>
+<p class=MsoNormal><img border=0 width=470 height=270 id="Рисунок 9"
+src="{% static 'images/lecture/image014.jpg' %}"
+alt="https://infostart.ru/upload/iblock/22e/1250-Fig9.jpg"></p>
+<p class=MsoNormal>Рисунок 12. Внутри оператора обмена Gather Streams</p>
+<p class=MsoNormal>Каждый производитель собирает строки на его входе и
+упаковывает их в одном или нескольких буферах памяти. После того, как буфер
+заполнен, производитель отдает его потребителю. Каждый из производителей и
+потребителей работает на том же рабочем потоке в качестве контекста выполнения,
+к которому он подключен (общая раскраска). Потребитель обмена читает строку из
+буфера обмена, каждый раз, когда его попросил один из его родительских
+операторов (обозначенный красным цветом Stream Aggregate, в этом случае).</p>
+<p class=MsoNormal>Одним из главных преимуществ данной конструкции является то,
+что сложности обычно связанные с обменом данными между несколькими потоками
+исполнения могут быть урегулированы SQL Server внутри одного оператора.
+Остальные, необменные операторы в плане работают последовательно, и не должны
+иметь дело с этим механизмом.</p>
+<p class=MsoNormal>Оператор обмена использует буферы, чтобы свести к минимуму
+издержки и реализовать основной вид управления потоком (чтобы предотвратить
+быстрых производителей уйти слишком далеко вперед медленной работы
+потребителей, например). Точное расположение буферов зависит от типа обмена,
+требуется или нет сохранять порядок, и решение какому потребителю производитель
+строки должен её направить.</p>
+<h3>Маршрутизация Строки (Routing Rows)</h3>
+<p><span style='font-size:14.0pt'>Как уже отмечалось, оператор обмена может
+решать, к какому потребителю производитель должен направить конкретную строку.
+Это решение зависит от типа разделения (PartitioningType) указанного для
+обмена. Существует пять вариантов</span>:</p>
+<p class=MsoListParagraphCxSpFirst style='margin-left:71.45pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Хэш (hash) – наиболее распространен. Потребитель выбирается
+исходя из оценки хэш функции по одному или нескольким значениям столбцов в
+текущей строке</p>
+<p class=MsoListParagraphCxSpMiddle style='margin-left:71.45pt;text-indent:
+-18.0pt'><span style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Круговая система (RoundRobin) – каждая новая строка посылается к
+следующему потребителю в определенной последовательности</p>
+<p class=MsoListParagraphCxSpMiddle style='margin-left:71.45pt;text-indent:
+-18.0pt'><span style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Трансляция (Broadcast) – каждая строка отправляется всем
+потребителям</p>
+<p class=MsoListParagraphCxSpMiddle style='margin-left:71.45pt;text-indent:
+-18.0pt'><span style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Спрос (Demand) – строка отсылается первому потребителю, который
+попросит её. Это единственный тип разделения, где строка направляется от
+производителя посредством потребителя внутри оператора обмена</p>
+<p class=MsoListParagraphCxSpLast style='margin-left:71.45pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Диапазон (Range) – Каждому потребителю присваивается
+неперекрывающийся диапазон значений. Диапазон, в который попадает входной
+столбец определяет какой потребитель получит строку.</p>
+<p class=MsoNormal>Типы разделения «Спрос» и «Диапазон» встречаются гораздо
+реже, чем первые три, и, как правило, их можно увидеть только в планах
+запросов, которые работают с секционированными таблицами (Partitioned Tables).
+Тип «Спрос» используется в совместно размещенных разделах соединений для
+назначения идентификатора раздела к следующему рабочему потоку. Тип «Диапазон»
+используется, например, при создании секционированных индексов. Типы
+разделения, которые использовались, и любые значения столбцов, используемые в
+процессе, видны в графическом плане запроса:&nbsp;</p>
+<p class=MsoNormal><img border=0 width=334 height=200 id="Рисунок 8"
+src="{% static 'images/lecture/image015.jpg' %}"
+alt="https://infostart.ru/upload/iblock/f18/1250-Fig10.jpg"></p>
+<p class=MsoNormal>Рисунок 13. Информация о разделении обмена (<span
+style='background:white'>Exchange Partitioning Information</span>)</p>
+<p class=MsoNormal>Наиболее распространенные типы разделения будут подробно
+описаны в следующих публикациях.</p>
+<h3>Сохранение порядка ввода</h3>
+<p class=MsoNormal>Оператор обмена необязательно может быть сконфигурирован
+так, чтобы сохранить порядок сортировки. Это полезно в планах, где строки,
+входящие в обмен уже отсортированы (сохраняя предыдущую сортировку, или как
+следствие упорядоченного чтения из индекса) таким образом, что полезно для
+более позднего оператора. Если обмен не сохранил порядок, оптимизатор должен
+будет ввести дополнительного оператора сортировки после обмена, чтобы
+восстановить необходимый порядок. К общим операторам, которые требуют
+отсортированные входные данные относятся&nbsp;<span style='background:white'>Stream
+Aggregate, Segment, и Merge Join</span>. На рисунке 14 показан сохраняющей
+порядок&nbsp;<span style='background:white'>Repartition Streams&nbsp;</span>обмен
+в действии:&nbsp;</p>
+<p class=MsoNormal><img border=0 width=500 height=140 id="Рисунок 7"
+src="{% static 'images/lecture/image016.jpg' %}"
+alt="https://infostart.ru/upload/iblock/b77/1250-Fig11.jpg"></p>
+<p class=MsoNormal>Рисунок<span lang=EN-US> 14. <span style='background:white'>An
+Order-Preserving Repartition Streams Exchange</span></span></p>
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+<p class=MsoNormal>Строки, прибывающие на трех входах в обмен в определенном
+порядке (отсортированные, с точки зрения отдельных работников).Сохраняющей
+порядок обмен, известный как обмен слияния (<span style='background:white'>merging
+exchange</span>), гарантирует, что работник (и) на его выходе получать строки в
+том же порядке сортировки (при том, что распределение, как правило, разное,
+конечно).</p>
+<p class=MsoNormal>Обмен &nbsp;сбора потоков (Gather Stream Exchange) также
+может сохраняют порядок сортировки, при необходимости (также как обмен
+распределения потоков (Distribute Streams Exchange)). В любом случае, если
+обмен является обменом слияния (merging exchange), оператор обмена имеет
+атрибут «Сортировать по» (Order by) , как показано на рисунке 15:&nbsp;</p>
+<p class=MsoNormal><img border=0 width=312 height=162 id="Рисунок 6"
+src="{% static 'images/lecture/image017.jpg' %}"
+alt="https://infostart.ru/upload/iblock/bad/1250-Fig12.jpg"></p>
+<p class=MsoNormal>Рисунок<span lang=EN-US> 15. </span>Атрибут<span lang=EN-US>
+«</span>Сортировать по<span lang=EN-US>» </span>обмена слияния<span lang=EN-US>
+(<span style='background:white'>The 'Order By' Attribute of a Merging Exchange</span>)</span></p>
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+<p class=MsoNormal>Обратите внимание, что обмен слияния (Merging Exchange) не
+выполняет никакой сортировки; она ограничивается сохранением порядок сортировки
+строк, поступающих на его входы. Обмен слияния может быть гораздо менее
+эффективным, чем вариант, не сохраняющий порядок и это связано с определенными
+проблемами производительности. Это уже другая тема, которую мы рассмотрим более
+подробно позже в других публикациях.</p>
+<p class=MsoNormal>План параллельных запросов может содержать любое количество
+параллельных и последовательных областей, связанных оператором обмена.
+Параллельные зоны расширяются на несколько последовательных запросов, каждый из
+которых использует один рабочий поток для обработки задачи в пределах контекста
+выполнения. Операторы обмена используются для распределения строк между
+работниками, и эти операторы существуют только в параллельном плане запроса, и
+&nbsp;которые взаимодействуют непосредственно с более чем одним работником. SQL
+Server обеспечивает поставщика параллельных страниц, который позволяет
+нескольким работникам совместно сканировать таблицу или индекс, гарантируя правильные
+результаты.</p>
+<h2><span lang=KZ>4.2 Применение облачных и квантовых технологий при создании
+последовательных и параллельных запросов. </span></h2>
+<p class=MsoNormal>Облачные технологии и квантовые вычисления могут быть
+использованы для оптимизации и ускорения как последовательных, так и
+параллельных запросов. Давайте рассмотрим, как каждая из этих технологий может
+быть применена:</p>
+<p class=MsoNormal>1. Облачные технологии:</p>
+<p class=MsoNormal>Последовательные запросы:</p>
+<p class=MsoListParagraphCxSpFirst style='margin-left:71.45pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Масштабирование ресурсов: Облачные платформы позволяют мгновенно
+масштабировать вычислительные ресурсы в зависимости от нагрузки. Это позволяет
+ускорить обработку последовательных запросов, предоставляя необходимые ресурсы
+по мере необходимости.</p>
+<p class=MsoListParagraphCxSpLast style='margin-left:71.45pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Эластичность: Облачные услуги обеспечивают гибкость в управлении
+ресурсами, что позволяет адаптироваться к изменениям объема запросов.</p>
+<p class=MsoNormal>   Параллельные запросы:</p>
+<p class=MsoListParagraph style='margin-left:71.45pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Распределенные вычисления: Облачные платформы предоставляют
+инструменты для организации параллельных вычислений. Вы можете использовать
+распределенные базы данных или вычислительные кластеры для эффективной
+обработки параллельных запросов.</p>
+<p class=MsoNormal>2. Квантовые технологии:</p>
+<p class=MsoNormal>   Последовательные запросы:</p>
+<p class=MsoListParagraph style='margin-left:71.45pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Квантовые вычисления: В квантовых вычислениях можно использовать
+кубиты для обработки информации параллельно, что может ускорить решение
+определенных типов задач. Однако на данный момент квантовые компьютеры
+ограничены в размере и стабильности.</p>
+<p class=MsoNormal>   Параллельные запросы:</p>
+<p class=MsoListParagraph style='margin-left:88.5pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Квантовые параллелизм: Квантовые компьютеры имеют потенциал для
+обработки параллельных запросов в несколько раз быстрее, чем классические
+компьютеры. Однако, пока квантовые компьютеры находятся на стадии разработки,
+их применение в реальных задачах ограничено.</p>
+<p class=MsoNormal>Таким образом, комбинирование облачных и квантовых
+технологий может привести к созданию более эффективных систем обработки
+запросов, где облачные ресурсы обеспечивают гибкость и масштабируемость, а
+квантовые технологии позволяют ускорить обработку данных через параллельные
+вычисления.</p>
+<div align="center">
+	<a style="align:center" href="javascript:history.back();">Назад</a>	
+	<a>|</a>
+	<a style="align:center" href="javascript:scroll(0,0)">Наверх</a>	
+</div>				
+<h1><a name="lecture5">Лекция 5. Фрагментарный параллелизм. Методы внедрения фрагментарного параллелизма</a></h1>
+<p class=MsoNormal>Основной формой внутриоперациопиого параллелизма является фрагментарный
+параллелизм, сутью которого является разбиение массива данных на фрагменты и их
+независимое выполнение. </p>
+<p class=MsoNormal>Фрагментация означает разбиение объекта данных, например
+реляционной таблицы, на подмножества строк или столбцов и распределение их
+между различными ресурсами вычислительной системы. Классические модели
+фрагментации в приложении к реляционным базам данных: горизонтальная -
+множество строк таблицы разбивается по значению какого-либо столбца (например,
+таблица с данными о сотрудниках разбивается по значению столбца JOBLOCATION -
+место службы, которое определяет, на каком физическом узле должны храниться
+соответствующие строки), а также вертикальная - таблица разбивается на
+подмножества столбцов.</p>
+<p class=MsoNormal>Тиражирование - это создание дублирующих копий (репликатов)
+объектов данных на разных узлах с целью повышения доступности и/или сокращения
+времени доступа к критически важным данным числительных систем с массовым
+параллелизмом (Massively Parallel Processing, МРР). Если в организации ведутся
+эксперименты по применению систем МРР, то параллельные системы баз данных
+должны представлять соответствующий интерес. </p>
+<p class=MsoNormal>Если в настоящее время в организации эксплуатируется
+централизованная база данных, а ресурсы мэйнфрейма близки к исчерпанию, то
+понимание технологий параллельных систем баз данных - важного перспективного
+направления для всех крупнейших поставщиков СУБД - является крайне важным.
+Поэтому следует провести сравнение данного подхода с более традиционными
+моделями распределения (в организации на уровне подразделений могут успешно
+сосуществовать оба варианта, выбираемые с учетом специфики конкретного набора
+приложений).</p>
+<p class=MsoNormal>Классическая модель фрагментации, когда данные
+распределяются между узлами сети, может оказаться не самым эффективным
+подходом, если учесть конкретные бизнес-правила, а также нормы доступа к
+объектам и их обновления со стороны определенных пользователей и приложений.
+Но, как отмечалось там же, фрагментацию вряд ли можно списывать со счетов как
+устаревший метод распределения данных.</p>
+<p class=MsoNormal>Условно различают горизонтальный фрагментарный параллелизм -
+разделение по кортежам и вертикальный фрагментарный параллелизм - разделение по
+атрибутам. Этот подход позволяет увеличить производительность выполнения задачи
+путем одновременного выполнения её частей на нескольких вычислительных
+ресурсах. Фрагментарный параллелизм может быть применен в различных областях,
+включая вычислительные науки, обработку данных, анализ изображений, сетевые
+технологии и другие.</p>
+<p class=MsoNormal>Фрагментарный параллелизм (или фрагментация) - это метод
+параллелизации, при котором задача делится на небольшие фрагменты, которые
+затем могут быть выполнены параллельно. Этот подход может быть полезен в
+различных областях, включая обработку данных, вычислительные задачи и сетевые
+приложения. Вот несколько методов внедрения фрагментарного параллелизма:</p>
+<p class=MsoNormal>Разделение данных:</p>
+<p class=MsoNormal>Разделение по данным (Data Parallelism): Задача разделяется
+на небольшие блоки данных, которые обрабатываются параллельно. Это часто
+используется в обработке изображений, видео и других данных, где каждый
+фрагмент может быть обработан независимо.</p>
+<p class=MsoNormal>MapReduce: Этот подход предоставляет структуру для обработки
+больших наборов данных на распределенных кластерах. Задача делится на две
+части: &quot;Map&quot; (разделение) и &quot;Reduce&quot; (объединение).</p>
+<p class=MsoNormal>Разделение задач:</p>
+<p class=MsoNormal>Задачи с фиксированным размером: Задача разбивается на
+фрагменты фиксированного размера, и каждый фрагмент обрабатывается параллельно.
+Это часто используется в численных вычислениях.</p>
+<p class=MsoNormal>Поточная обработка (Pipeline): Задача разделяется на
+последовательность этапов, и каждый этап может быть выполнен параллельно.
+Результат одного этапа передается следующему.</p>
+<p class=MsoNormal>Разделение на уровне алгоритма:</p>
+<p class=MsoNormal>Разделение циклов (Loop Parallelism): Если задача включает
+циклы, итерации цикла могут быть выполнены параллельно.</p>
+<p class=MsoNormal>Декомпозиция на уровне алгоритма: Алгоритм разбивается на
+фрагменты, которые могут быть выполнены параллельно. Каждый фрагмент решает
+свою подзадачу.</p>
+<p class=MsoNormal>Модель акторов:</p>
+<p class=MsoNormal>Акторы: Фрагменты задач представлены в виде акторов, которые
+могут обмениваться сообщениями. Акторы выполняют свою работу независимо,
+обеспечивая параллельное выполнение.</p>
+<p class=MsoNormal>GPU-параллелизм:</p>
+<p class=MsoNormal>Использование графических процессоров (GPU): Для
+определенных задач, таких как обработка изображений или научные вычисления,
+можно использовать GPU для параллельного выполнения фрагментов задачи.</p>
+<p class=MsoNormal>Внедрение фрагментарного параллелизма требует внимательного
+анализа задачи и выбора наилучших методов, учитывая характер задачи и доступные
+ресурсы. Комбинирование различных методов может быть эффективным способом улучшить
+производительность выполнения задач.</p>
+<div align="center">
+	<a style="align:center" href="javascript:history.back();">Назад</a>	
+	<a>|</a>
+	<a style="align:center" href="javascript:scroll(0,0)">Наверх</a>	
+</div>				
+<h1><a name="glossary">Глоссарий</a></h1>
+<p class=MsoNormal>Параллельные запросы (Parallel Queries) - выполнение
+нескольких запросов к базе данных одновременно для ускорения обработки данных.</p>
+<p class=MsoNormal>Параллелизм (Parallelism) - процесс, при котором операции
+выполняются одновременно, увеличивая общую производительность системы.</p>
+<p class=MsoNormal>Параллельная обработка (Parallel Processing) - метод
+обработки данных, при котором задачи разделяются между несколькими процессорами
+или ядрами, работающими параллельно.</p>
+<p class=MsoNormal>Параллельная база данных (Parallel Database) - база данных,
+спроектированная для поддержки параллельной обработки запросов.</p>
+<p class=MsoNormal>Распределенная обработка запросов (Distributed Query
+Processing) - процесс обработки запросов, при котором данные распределены по
+разным узлам системы, и запросы выполняются параллельно.</p>
+<p class=MsoNormal>Шардирование (Sharding) - метод разделения базы данных на
+отдельные части (шарды), которые могут обрабатываться параллельно.</p>
+<p class=MsoNormal>Параллельное выполнение плана запроса (Parallel Query
+Execution Plan): Оптимизированный план выполнения запроса, разработанный для
+эффективной параллельной обработки.</p>
+<p class=MsoNormal>Параллельный доступ к данным (Parallel Data Access):
+Возможность одновременного доступа к различным частям данных базы данных для
+ускорения выполнения запросов.</p>
+<p class=MsoNormal>Индексирование для параллельного выполнения (Indexing for
+Parallel Execution) - создание индексов, специально предназначенных для
+эффективного параллельного выполнения запросов.</p>
+<p class=MsoNormal> Параллельный запросный язык (Parallel Query Language) - язык
+запросов, который поддерживает и облегчает написание запросов для параллельной
+обработки.</p>
+<p class=MsoNormal> Параллельный кластер баз данных (Parallel Database Cluster)
+- группа взаимодействующих баз данных, спроектированных для эффективной
+параллельной обработки запросов.</p>
+<p class=MsoNormal> Параллельная индексация (Parallel Indexing) - процесс
+создания индексов, который может выполняться параллельно для улучшения
+производительности.</p>
+<p class=MsoNormal> Параллельная блокировка (Parallel Locking) - механизм,
+позволяющий эффективно управлять блокировками данных в параллельной среде,
+предотвращая конфликты.</p>
+<p class=MsoNormal> Параллельный план выполнения (Parallel Execution Plan) - план,
+который оптимизирован для одновременного выполнения операций на нескольких
+процессорах или ядрах.</p>
+<p class=MsoNormal> Параллельная обработка данных в памяти (In-Memory Parallel
+Processing) - обработка данных, выполняемая в оперативной памяти, с использованием
+параллельных вычислений для ускорения запросов.</p>
+<p class=MsoNormal> Параллельный запросный оптимизатор (Parallel Query
+Optimizer) - компонент базы данных, ответственный за выбор оптимального плана
+выполнения запроса при использовании параллельных методов.</p>
+<p class=MsoNormal> Параллельная репликация (Parallel Replication) - процесс
+дублирования данных на несколько узлов в параллельной среде для обеспечения
+отказоустойчивости и распределенной обработки.</p>
+<p class=MsoNormal> Параллельный алгоритм слияния (Parallel Merge Algorithm) -
+метод слияния данных из разных источников, который может быть выполнен
+параллельно для улучшения производительности.</p>
+<p class=MsoNormal> Параллельный поиск (Parallel Search) - процесс
+одновременного поиска данных в нескольких частях базы данных или на разных
+серверах.</p>
+<p class=MsoNormal> Параллельный режим изоляции транзакции (Parallel
+Transaction Isolation Mode) - уровень изоляции транзакции, который поддерживает
+параллельное выполнение транзакций без конфликтов блокировок.</p>
+<p class=MsoNormal>Параллельные хранилища данных (Parallel Data Warehouses) - системы
+хранения данных, спроектированные для эффективного выполнения параллельных
+запросов в аналитических целях.</p>
+<p class=MsoNormal>Параллельные инструкции (Parallel Instructions) - команды,
+которые могут быть выполнены параллельно на уровне инструкций процессора.</p>
+<div align="center">
+	<a style="align:center" href="javascript:history.back();">Назад</a>	
+	<a>|</a>
+	<a style="align:center" href="javascript:scroll(0,0)">Наверх</a>	
+</div>	
+</div>
+
+<script type="text/javascript">
+	var TRange = null;
+	function findString(str) {
+		if (parseInt(navigator.appVersion) < 4) return;
+		var strFound;
+		if (window.find) {
+			// CODE FOR BROWSERS THAT SUPPORT window.find
+			strFound = self.find(str);
+			if (strFound && self.getSelection && !self.getSelection().anchorNode) {
+				strFound = self.find(str)
+			}
+			if (!strFound) {
+				strFound = self.find(str, 0, 1)
+				while (self.find(str, 0, 1)) continue
+			}
+		} else if (navigator.appName.indexOf("Microsoft") != -1) {
+			// EXPLORER-SPECIFIC CODE
+			if (TRange != null) {
+				TRange.collapse(false)
+				strFound = TRange.findText(str)
+				if (strFound) TRange.select()
+			}
+			if (TRange == null || strFound == 0) {
+				TRange = self.document.body.createTextRange()
+				strFound = TRange.findText(str)
+				if (strFound) TRange.select()
+			}
+		} else if (navigator.appName == "Opera") {
+			alert("Opera browsers not supported, sorry...")
+			return;
+		}
+		if (!strFound) alert("String '" + str + "' not found!")
+			return;
+	};
+	document.getElementById('f1').onsubmit = function() {
+		findString(this.t1.value);
+		return false;
+	};
+</script>	
+
+{% endblock content %}
