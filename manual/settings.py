@@ -107,10 +107,10 @@ DATABASES = {
 
     'default': {
 	    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-	    'NAME': 'manual',
+	    'NAME': 'manual_eaih',
 	    'USER' : 'manual_admin',
-	    'PASSWORD' : 'hc21zRBSizdLcq3ammsHRTJZwGRfQwya',
-	    'HOST' : 'dpg-cmq4lga1hbls73fhi660-a.frankfurt-postgres.render.com',
+	    'PASSWORD' : 'ThbusoWzeBPsvWlTxOKsAjPaNP5pTiyM',
+	    'HOST' : 'dpg-cpgt1hkf7o1s738l9nug-a.frankfurt-postgres.render.com',
 	    'PORT' : '5432',
     }
 
